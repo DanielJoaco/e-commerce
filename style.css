@@ -1,0 +1,94 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Barriecito&display=swap');
+body{
+    background-color: #001A6E;
+}
+
+h1, h2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #E1FFBB;
+    font-family: "Barriecito", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p{
+    font-family: "Atma", system-ui;
+    font-weight: 300;
+    font-style: normal;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+#div1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#p1{
+    display: flex;
+    font-size: 20px;
+    color: #E1FFBB;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #074799;
+}
+img{
+    width: 600px;
+    height: 450px;
+    border-radius: 20px;
+}
+#div2, a{
+    margin: 20px;
+    color: #E1FFBB;
+}
+
+#section2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#images{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#images img{
+    width: 500px;
+    height: 400px;
+    width: 48%;
+    height: auto;
+}
+
+@media (max-width: 600px){
+    h1{
+        font-size: 20px;
+        margin: 10px;
+
+    }
+    #p1{
+        font-size: 16px;
+        margin: 10px;
+        padding: 10px;
+    }
+    img{
+        width: 350px;
+        height: 215px;
+    }
+    #div2, a{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    #images img{
+        width: 30%;
+    }
+}
