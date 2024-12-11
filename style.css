@@ -5,6 +5,43 @@ body{
     background-color: #001A6E;
 }
 
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #074799;
+    color: #E1FFBB;
+    border-radius: 10px;
+}
+
+#divnavbar, #sesion{
+    width: 15%;
+}
+
+#divnavbar{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15px;
+}
+
+#sesion{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+}
+
+header button{
+    display: flex;
+    justify-content: center;
+    width: 2%;
+}
+
+nav{
+    display: none;
+}
+
+
+
 h1, h2{
     display: flex;
     flex-direction: column;
@@ -15,7 +52,7 @@ h1, h2{
     font-style: normal;
 }
 
-p{
+p, input, label, a{
     font-family: "Atma", system-ui;
     font-weight: 300;
     font-style: normal;
@@ -46,7 +83,6 @@ img{
     border-radius: 20px;
 }
 #div2, a{
-    margin: 20px;
     color: #E1FFBB;
 }
 
@@ -61,12 +97,25 @@ img{
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
 }
 #images img{
     width: 500px;
     height: 400px;
-    width: 48%;
+    width: 38%;
     height: auto;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #074799;
+    color: #E1FFBB;
+
 }
 
 @media (max-width: 600px){
