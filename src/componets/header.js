@@ -11,7 +11,7 @@ function Header() {
       <AppBar position="static">
         <Toolbar  className='header'>
             <a href='#' style={{display:"flex", alignItems:"center"}}>
-            <img src={logo} alt='logo' style={{padding:"0 1rem", width:"8rem"}} />
+            <img src={logo} alt='logo' style={{padding:"0.5rem 1rem 0.5rem", width:"6rem"}} />
               <h2>Ecommerce Tecnología</h2>            
             </a>
           <div className='header' style={{display:"flex"}} id='search'>
