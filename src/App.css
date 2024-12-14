@@ -1,13 +1,16 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+html {
+  font-size: 62.5%;
+}
 
 body{
-  background-color: #282c34;
+  background-color: #13161c;
   color: white;
 }
 
 body, button, input{
-  font-family: "Roboto Flex", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -16,11 +19,38 @@ body, button, input{
   width: 100%;
 }
 
+.MuiToolbar-root{
+  display: flex;
+  justify-content: space-between;
+  background-color: #07c3729f;
+}
+
 .header{
-  background-color: #282c34;
-  color: white;
+  background-color: #07c373;
+  color: #13161c;
+  display: flex;
+  align-items: center;
   text-align: center;
   padding: 0.1em;
+}
+
+#search{
+  margin: 0 1rem 0 0;
+}
+
+a{
+  color: #13161c;
+  text-decoration: none;
+  font-size: 1.6rem;
+  margin: 0 0.5rem 0 0.5rem;
+
+}
+
+.tab-panel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .App {
