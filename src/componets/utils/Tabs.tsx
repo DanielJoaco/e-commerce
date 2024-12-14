@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import ProductCards from './ProductCards.tsx';
+import data from '../../data.json'; // Asegúrate de que la ruta sea correcta
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -38,13 +39,11 @@ function a11yProps(index: number) {
   };
 }
 
-// Arreglo con la configuración de las pestañas y sus contenidos
-const tabsConfig = [
-  { label: 'Todos', content: <ProductCards table="all" /> },
-  { label: 'Computadores', content: <ProductCards table="computers" /> },
-  { label: 'Celulares', content: <ProductCards table="phones" /> },
-  { label: 'Monitores', content: <ProductCards table="monitor" /> },
-];
+// Obtiene las tablas únicas del JSON
+const getUniqueTables = () => {
+  const tables = data.map((item) => item.table);
+  return ["all", ...new Set(tables.filter((table) => table))]; // Incluye "all" como la primera pestaña
+};
 
 export default function DynamicTabs() {
   const [value, setValue] = React.useState(0);
@@ -52,6 +51,13 @@ export default function DynamicTabs() {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  // Crear las pestañas dinámicamente
+  const uniqueTables = getUniqueTables();
+  const tabsConfig = uniqueTables.map((table) => ({
+    label: table === "all" ? "Todos" : table.charAt(0).toUpperCase() + table.slice(1),
+    content: <ProductCards table={table} />,
+  }));
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -62,7 +68,7 @@ export default function DynamicTabs() {
           display: 'flex',
           justifyContent: 'center',
           width: '100%',
-          background: 'linear-gradient(to right, rgba(89, 161, 91, 0.35), rgba(57, 144, 157, 0.43))',
+          background: 'linear-gradient(to right, rgba(107, 66, 188, 0.5), rgba(79, 241, 254, 0.5))',
         }}
       >
         <Tabs
@@ -71,7 +77,7 @@ export default function DynamicTabs() {
           aria-label="dynamic tabs example"
           sx={{
             '& .MuiTabs-indicator': {
-              backgroundColor: '#07c373',
+              backgroundColor: '#c27fc5',
             },
           }}
         >
@@ -81,12 +87,16 @@ export default function DynamicTabs() {
               label={tab.label}
               {...a11yProps(index)}
               sx={{
-                fontSize: '2rem', // Tamaño de fuente aplicado a todas las pestañas
-                color: value === index ? '#07c373' : 'white',
-                textTransform: 'none', // Evita las mayúsculas automáticas
+                fontSize: '2rem', 
+                color: value === index ? '#c27fc5' : 'white',
+                textShadow: ' 0.1rem 0.1rem 0.5rem #561290',
+                textTransform: 'none',
                 '&.Mui-selected': {
-                  color: '#07c373',
+                  color: '#c27fc5',
                 },
+                fontFamily: "Lobster, sans-serif",
+                fontWeight: 400,
+                fontStyle: 'normal',
               }}
             />
           ))}

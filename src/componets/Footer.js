@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa'; // Íconos de redes sociales
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaTiktok } from 'react-icons/fa'; // Íconos de redes sociales
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
           <ul style={styles.list}>
             <li><a href="/quienes-somos" style={styles.link}>Quiénes Somos</a></li>
             <li><a href="/mision" style={styles.link}>Nuestra Misión</a></li>
-            <li><a href="/contacto" style={styles.link}>Contacto</a></li>
+            <li><a href="https://api.whatsapp.com/message/QB474E4RTCFVD1" style={styles.link}>Contacto</a></li>
           </ul>
         </div>
 
@@ -26,16 +26,15 @@ const Footer = () => {
         <div style={styles.section}>
           <h4 style={styles.title}>Redes Sociales</h4>
           <div style={styles.socialIcons}>
-            <a href="https://www.facebook.com" style={styles.iconLink}><FaFacebook style={styles.icon} /></a>
-            <a href="https://www.instagram.com" style={styles.iconLink}><FaInstagram style={styles.icon} /></a>
-            <a href="https://www.twitter.com" style={styles.iconLink}><FaTwitter style={styles.icon} /></a>
-            <a href="https://www.linkedin.com" style={styles.iconLink}><FaLinkedin style={styles.icon} /></a>
+            <a href="https://www.facebook.com/profile.php?id=100094601974802" style={styles.iconLink}><FaFacebook style={styles.icon} /></a>
+            <a href="https://www.instagram.com/yane_beautystore/" style={styles.iconLink}><FaInstagram style={styles.icon} /></a>
+            <a href="https://www.tiktok.com/@yane_beautystore" style={styles.iconLink}><FaTiktok style={styles.icon} /></a>
           </div>
         </div>
       </div>
 
       <div style={styles.copyRight}>
-        <p style={styles.text}>© 2024 Ecommerce Tecnología. Todos los derechos reservados.</p>
+        <p style={styles.text}>© 2024 Yane, beauty store. Todos los derechos reservados.</p>
       </div>
     </footer>
   );

@@ -50,60 +50,103 @@ const ProductCards: React.FC<ProductCardsProps> = ({ table }) => {
   };
 
   return (
-    <Box sx={{ p: 4 }}>
-      <Grid container spacing={4}>
-        {filteredProducts.map((product) => (
-          <Grid item xs={12} sm={6} md={4} key={product.id}>
-            <Card
+  <Box sx={{ p: 4 }}>
+    <Grid container spacing={4}>
+      {filteredProducts.map((product) => (
+        <Grid item xs={12} sm={6} md={4} key={product.id}>
+          <Card
+            sx={{
+              maxWidth: "35rem",
+              backgroundColor: "rgba(255, 210, 235, 0.3)",
+              borderRadius: "2rem",
+              color: "white",
+              boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
+              margin: "auto",
+            }}
+          >
+            <CardMedia
+              component="img"
               sx={{
-                maxWidth: 345,
-                backgroundColor: "#07c3724b",
-                borderRadius: "2rem",
-                color: "white",
+                height: "20rem",
+                width: "auto",
+                maxWidth: "100%",
+                margin: "2rem auto",
+                objectFit: "contain",
+                filter: "drop-shadow(0 0 10px white)",
               }}
-            >
-              <CardMedia
-                component="img"
+              image={product.image}
+              alt={product.name}
+            />
+            <CardContent>
+              <Box
                 sx={{
-                  height: "20rem",
-                  width: "auto",
-                  maxWidth: "100%",
-                  margin: "2rem auto",
-                  objectFit: "contain",
-                  filter: "drop-shadow(0 0 10px white)", // Sombra blanca ajustada al contenido visible
+                  display: "flex",
+                  alignItems: "center",
+                  mb: 2,
                 }}
-                image={product.image}
-                alt={product.name}
-              />
-              <CardContent>
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  {renderStars(product.stars)}
-                  <Typography variant="body2" color="white" sx={{ ml: 1, fontSize: "1.4rem" }}>
-                    | {product.reviews} opiniones
-                  </Typography>
-                </Box>
-                <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: "2.4rem" }}>
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" color="white" sx={{ fontSize: "1.8rem" }}>
-                  {product.description}
-                </Typography>
-                <Typography variant="h4" color="#F9CA7F " sx={{ mt: 2, fontSize: "2.8rem" }}>
-                  ${product.price.toFixed(0)}
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="success"
-                  sx={{ mt: 2, fontSize: "1.4rem", borderRadius: "2rem" }}
+              >
+                {renderStars(product.stars)}
+                <Typography
+                  variant="body2"
+                  color="white"
+                  sx={{ ml: 1, 
+                        fontSize: "1.4rem",                       
+                        fontFamily: "'Lobster', sans-serif",
+                        fontWeight: 400, }}
                 >
-                  Agregar al carrito
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+                  | {product.reviews} opiniones
+                </Typography>
+              </Box>
+              <Typography
+                gutterBottom
+                variant="h5"
+                component="div"
+                sx={{ fontSize: "2.4rem",              
+                      fontFamily: "'Lobster', sans-serif",
+                      fontWeight: 600,}}
+              >
+                {product.name}
+              </Typography>
+              <Typography
+                variant="body2"
+                color="white"
+                sx={{ fontSize: "1.8rem",                       
+                      fontFamily: "'Lobster', sans-serif",
+                      fontWeight: 400,}}
+              >
+                {product.description}
+              </Typography>
+              <Typography
+                variant="h4"
+                color="#F9CA7F"
+                sx={{ mt: 2, 
+                      fontSize: "2.8rem", 
+                      fontFamily: "'Lobster', sans-serif", 
+                      fontWeight: 600,}}
+              >
+                ${product.price.toFixed(0)}
+              </Typography>
+              <Button
+                variant="contained"
+                color="success"
+                sx={{ mt: 2, 
+                      fontSize: "1.6rem", 
+                      borderRadius: "2rem",
+                      fontFamily: "'Lobster', sans-serif",
+                      fontWeight: 400,
+                      textShadow: ' 0.1rem 0.1rem 0.5rem #561290',
+                      textTransform: 'none',
+                      backgroundColor: "#e136c6",}}
+              >
+                Agregar al carrito
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
+
   );
 };
 

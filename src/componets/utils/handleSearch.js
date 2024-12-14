@@ -49,7 +49,7 @@ const styles = {
     cursor: 'pointer',
     fontSize: '2.0rem',
     marginLeft: '1.0rem',
-    color: '#13161c',
+    color: '#561290',
   },
 };
 

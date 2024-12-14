@@ -1,18 +1,18 @@
-
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Silkscreen:wght@400;700&display=swap');
 html {
   font-size: 62.5%;
 }
 
 body{
-  background: #13161c;
+  background: #520e8b;
   color: white;
-  
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 body, button, input{
-  font-family: "IBM Plex Sans", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Lobster", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -23,12 +23,12 @@ body, button, input{
 .MuiToolbar-root{
   display: flex;
   justify-content: space-between;
-  background-color: #07c3729f;
+  background-color: #693ebc;
 }
 
 .header{
-  background-color: #07c373;
-  color: #13161c;
+  background-color: #e033c4;
+  color: #fbffff;
   display: flex;
   align-items: center;
   text-align: center;
@@ -40,7 +40,8 @@ body, button, input{
 }
 
 a{
-  color: #13161c;
+  color: #fbffff;
+  text-shadow: 0.1rem 0.1rem 0.5rem #561290;
   text-decoration: none;
   font-size: 1.6rem;
   margin: 0 0.5rem 0 0.5rem;
@@ -62,13 +63,12 @@ a{
 }
 
 .App-header {
-  background-color: #282c34;
-
+  background-color: #520e8b;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10.0rem + 2vmin);
   color: white;
 }
 
