@@ -5,8 +5,9 @@ html {
 }
 
 body{
-  background-color: #13161c;
+  background: #13161c;
   color: white;
+  
 }
 
 body, button, input{

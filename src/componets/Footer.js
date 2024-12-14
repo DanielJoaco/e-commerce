@@ -57,7 +57,7 @@ const styles = {
     padding: '0 2.0rem',
   },
   title: {
-    fontSize: '1.8rem',
+    fontSize: '2.4rem',
     fontWeight: 'bold',
     marginBottom: '1.0rem',
   },
@@ -68,7 +68,7 @@ const styles = {
   link: {
     color: '#bbb',
     textDecoration: 'none',
-    fontSize: '1.4rem',
+    fontSize: '2rem',
     display: 'block',
     marginBottom: '.5rem',
   },
@@ -83,14 +83,14 @@ const styles = {
   },
   icon: {
     fontSize: '2.4rem',
-    margin: '0 1.0rem',
+    margin: '0',
   },
   copyRight: {
     textAlign: 'center',
-    marginTop: '2.0rem',
+    marginTop: '2rem',
   },
   text: {
-    fontSize: '1.4rem',
+    fontSize: '2rem',
     color: '#bbb',
   },
 };

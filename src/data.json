@@ -1,0 +1,53 @@
+[
+    {
+      "id": 1,
+      "table": "computers",
+      "name": "Portátil HP",
+      "description": "14″ Celeron 8GB SSD 256GB",
+      "price": 1099000,
+      "image": "https://reset.net.co/wp-content/uploads/2022/06/HP-14-Celeron-8GB-SSD-256GB-14-cf2509la-v3-300x300.webp",
+      "stars": 4.5,
+      "reviews": 120
+    },
+    {
+      "id": 2,
+      "table": "computers",
+      "name": "Portátil Acer",
+      "description": "Nitro 5 – i5 10300H + GTX1650 + 8GB + 512GB",
+      "price": 3599000,
+      "image": "https://reset.net.co/wp-content/uploads/2021/10/ACER-NITRO5-10300H-GTX1650-300x300.webp",
+      "stars": 4,
+      "reviews": 85
+    },
+    {
+      "id": 3,
+      "table": "monitor",
+      "name": "Monitor 24″ Acer'",
+      "description": "Nitro 180Hz KG240Y IPS FHD sRGB 99%",
+      "price": 699000,
+      "image": "https://reset.net.co/wp-content/uploads/2021/07/Acer-Nitro-KG240Y-300x300.webp",
+      "stars": 4.9,
+      "reviews": 300
+    },
+    {
+      "id": 4,
+      "table": "monitor",
+      "name": "Monitor 24″ Samsumg",
+      "description": "FHD 60Hz VA 178°",
+      "price": 719000,
+      "image": "https://reset.net.co/wp-content/uploads/2022/06/mx-s31a-ls24a310nhlxzx-368465477-300x300.webp",
+      "stars": 4.7,
+      "reviews": 95
+    },
+    {
+      "id": 5,
+      "table": "accessories",
+      "name": "Monitor 24″ LG",
+      "description": "144Hz Ultra Gear 24GL600F-B",
+      "price": 999000,
+      "image": "https://reset.net.co/wp-content/uploads/2021/05/LG-ULTRAGEAR-24GL600F-B-24-2.webp",
+      "stars": 4.6,
+      "reviews": 210
+    }
+  ]
+  
