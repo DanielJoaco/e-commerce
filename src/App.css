@@ -6,9 +6,6 @@ html {
 body{
   background: #fef1ff;
   color: white;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
 }
 
 body, button, input{
@@ -16,14 +13,12 @@ body, button, input{
   font-weight: 400;
   font-style: normal;
 }
-.MuiBox-root{
-  width: 100%;
-}
+
 
 .MuiToolbar-root{
   display: flex;
   justify-content: space-between;
-  background-color: #693ebc;
+  background-color: rgb(105, 62, 188);
 }
 
 .header{

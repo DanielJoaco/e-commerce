@@ -98,11 +98,11 @@ export default function DynamicTabs() {
               {...a11yProps(index)}
               sx={{
                 fontSize: "2.4rem",
-                color: value === index ? "#e033c4" : "white",
+                color: value === index ? "#561290" : "white",
                 textShadow: "0.1rem 0.1rem 0.5rem rgba(85, 18, 144, 0.61)",
                 textTransform: "none",
                 "&.Mui-selected": {
-                  color: "#e033c4",
+                  color: "#561290",
                 },
                 fontFamily: "Lobster, sans-serif",
                 fontWeight: 400,
@@ -115,13 +115,32 @@ export default function DynamicTabs() {
       {tabsConfig.map((tab, index) => (
         <CustomTabPanel key={index} value={value} index={index}>
           <ProductCards table="custom" data={paginatedContent} />
-          <Stack spacing={2} sx={{ mt: 4, alignItems: "center" }}>
+            <Stack spacing={2} sx={{ mt: 4, alignItems: "center" }}>
             <Pagination
-              count={Math.ceil(currentTabContent.length / itemsPerPage)} // Calcula el número total de páginas
+              count={Math.ceil(currentTabContent.length / itemsPerPage)}
               page={currentPage}
               onChange={handleChangePage}
+              sx={{
+              "& .MuiPaginationItem-root": {
+                fontFamily: "Lobster, sans-serif",
+                padding: "2rem",
+                borderRadius: "10rem",
+                fontSize: "2.4rem",
+                backgroundColor: "rgba(255, 126, 197, 0.8)",
+                boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
+                textShadow: '0.1rem 0.1rem 0.5rem #561290',
+                color: "white",
+                "&:hover": {
+                backgroundColor: "#561290",
+                },
+                "&.Mui-selected": {
+                backgroundColor: "#e033c4",
+                color: "white",
+                },
+              },
+              }}
             />
-          </Stack>
+            </Stack>
         </CustomTabPanel>
       ))}
     </Box>

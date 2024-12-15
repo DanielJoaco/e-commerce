@@ -6,13 +6,9 @@ import BasicTabs from './componets/utils/Tabs.tsx';
 function App() {
   return (
     <div className="App">
-      <header className="App-header" >
-          <Header />
-      </header>
+      <Header />
       <BasicTabs />
-      <footer>
-          <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }
