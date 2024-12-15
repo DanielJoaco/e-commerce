@@ -42,7 +42,7 @@ const Footer = () => {
 
 const styles = {
   footer: {
-    backgroundColor: 'rgba(17, 17, 17, 0.3)',
+    backgroundColor: 'rgba(87, 18, 135, 0.75)',
     padding: '4.0rem 0',
   },
   container: {
