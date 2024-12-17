@@ -3,7 +3,7 @@ import React from 'react';
 const AboutUs = () => {
   const styles = {
     aboutUs: {
-      fontFamily: 'Arial, sans-serif',
+      fontFamily: "'Lobster', sans-serif",
       lineHeight: 1.6,
       color: '#333',
       margin: '20px',
@@ -15,13 +15,13 @@ const AboutUs = () => {
       color: '#561290',
       textAlign: 'center',
       marginBottom: '2rem',
-      textShadow: '0.1rem 0.1rem 0.5rem rgba(85, 18, 144, 0.3)',
+      textShadow: '0.1rem 0.1rem 0.5rem white',
     },
     sectionContainer: {
       marginBottom: '3rem',
       padding: '1.5rem',
       borderRadius: '8px',
-      backgroundColor: "rgba(255, 255, 255, 0.3)",
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
       boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
     },
     sectionTitle: {
@@ -29,21 +29,24 @@ const AboutUs = () => {
       fontWeight: 'bold',
       color: '#e136c6',
       marginBottom: '1rem',
+      textShadow: "0.1rem 0.1rem 0.5rem white",
     },
     text: {
       fontSize: '1.6rem',
       margin: '10px 0',
-      color: '#555',
+      textShadow: "0.1rem 0.1rem 0.5rem #561290",
+      color: "white",
     },
     strongText: {
       color: '#e136c6',
       fontWeight: 'bold',
+      textShadow: "0.1rem 0.1rem 0.5rem white",
     },
   };
 
   return (
     <div style={styles.aboutUs}>
-      <h1 style={styles.mainTitle}>About Us</h1>
+      <h1 style={styles.mainTitle}>Sobre nosotros</h1>
 
       {/* Quiénes Somos */}
       <section id="quienesSomos" style={styles.sectionContainer}>

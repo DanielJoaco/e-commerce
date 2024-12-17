@@ -59,24 +59,20 @@ a{
   font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-}
-
-.App-header {
-  background-color: #520e8b;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10.0rem + 2vmin);
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 1.4rem;
   }
-  to {
-    transform: rotate(360deg);
+  #title_header{
+    display: none;
+  }
+
+  a {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  #search {
+    margin: 1rem 0;
   }
 }

@@ -19,7 +19,7 @@ function Header({ onNavigate }) {
             style={{ display: "flex", alignItems: "center" }}
           >
             <img src={logo} alt='logo' style={{ padding: "0.1rem 1rem 0.1rem", width: "6rem" }} />
-            <h2>Yane, beauty store</h2>
+            <h2 id='title_header'>Yane, beauty store</h2>
           </a>
           <div className='header' style={{ display: "flex" }} id='search'>
             <HandleSearch />
