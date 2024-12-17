@@ -78,7 +78,7 @@ const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
           <Grid item xs={12} sm={6} md={4} key={product.id}>
             <Box sx={styles.cardWrapper}>
               {product.quantity < 1 && (
-                <Button disabled sx={styles.outOfStock}>
+                <Button disabled sx={styles.outOfStock} className="out-of-stock">
                   ¡Agotado!
                 </Button>
               )}
@@ -156,15 +156,11 @@ const styles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%) rotate(-45deg)",
-    fontSize: "2.6rem",
-    backgroundColor: "#F9CA7F",
-    color: "red",
     fontWeight: "bold",
-    textTransform: "uppercase",
     pointerEvents: "none",
     zIndex: 1,
-    boxShadow: "0.4rem 0.4rem 2rem #0000004d",
-    borderRadius: "1rem",
+    boxShadow: "0.4rem 0.4rem 4rem #0000004d",
+    borderRadius: "2rem",
   },
   card: {
     width: "32rem",
@@ -185,13 +181,13 @@ const styles = {
     alignItems: "center",
   },
   cardMedia: {
-    height: "20rem",
-    width: "70%",
+    height: "15rem",
+    width: "60%",
     maxWidth: "100%",
     margin: "2rem auto",
     objectFit: "contain",
     backgroundColor: "rgba(252, 185, 255, 0.3)",
-    borderRadius: "120rem",
+    borderRadius: "10000rem",
     filter: "drop-shadow(0 0 10px white)",
   },
   starsContainer: {
@@ -229,7 +225,7 @@ const styles = {
     fontFamily: "Lobster, sans-serif",
     borderRadius: "10rem",
     fontSize: "2rem",
-    backgroundColor: "rgba(255, 126, 197, 0.8)",
+    backgroundColor: " rgba(115, 104, 214, 0.6)",
     boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
     textShadow: "0.1rem 0.1rem 0.5rem #561290",
     color: "white",
@@ -260,7 +256,7 @@ const styles = {
     fontWeight: 400,
     textShadow: "0.1rem 0.1rem 0.5rem #561290",
     textTransform: "none",
-    backgroundColor: "#e136c6",
+    backgroundColor: "rgb(212, 65, 200)",
   },
 };
 

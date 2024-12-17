@@ -11,7 +11,7 @@ const onFinishFailed = (errorInfo) => {
 };
 
 const SignIn = () => (
-  <div className="container">
+  <div className="container-sign">
     <div className="divImg">
       <img
         src="https://raw.githubusercontent.com/DanielJoaco/e-commerce/refs/heads/main/src/assets/logo2.png"

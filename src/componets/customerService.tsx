@@ -12,7 +12,7 @@ const CustomerService = ({ section }) => {
   }, [section]);
 
   return (
-    <div className="container">
+    <div className="container-info">
       <h1 className="main-title">Servicio al Cliente</h1>
 
       {/* Políticas de la Empresa */}

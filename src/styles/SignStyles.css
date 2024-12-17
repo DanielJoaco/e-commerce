@@ -1,10 +1,8 @@
-.container {
+.container-sign {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    background: linear-gradient(135deg, rgba(250, 155, 255, 1), rgba(196, 189, 255, 0.56), rgba(172, 151, 184, 1));
   }
-  
   .divImg {
     display: flex;
     justify-content: center;
@@ -38,42 +36,68 @@
     font-family: 'Lobster', sans-serif;
     font-weight: 600;
   }
+
+  .buttonContainer, .ant-select-selection-item {
+    font-family: 'Lobster', sans-serif;
+  }
+
   
-  .buttonContainer {
+  .buttonContainer{
     text-align: center;
     background-color: #e136c6;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border-radius: 1rem;
     padding: 1rem;
-    font-family: 'Lobster', sans-serif;
     text-shadow: 0.1rem 0.1rem 0.5rem #561290;
     transition: background-color 0.3s ease;
   }
   
   .label {
     font-family: 'Lobster', sans-serif;
-    font-size: 16px;
+    font-size: 1.6rem;
+    overflow: visible;
   }
   
   .checkbox {
     font-family: 'Lobster', sans-serif;
     font-weight: 600;
   }
+  .ant-col{
+    overflow: visible!important;
+  }
 
-  @media (max-width: 1100px) {
+  .terminos:hover {
+    color: #c12aa0;
+  }
+
+  @media (max-width: 1100px){
+    .divImg{
+      width: 30%;
+    }
+    .formContainer{
+      width: 70%;
+    }
+  }
+
+  @media (max-width: 800px){
     .divImg{
       display: none;
     }
     .formContainer{
       width: 100%;
-      margin: 0 10% 0 10%;
+      border-radius: 0;
     }
-  }
-  @media (max-width: 800px), (max-width: 574px) {
+
     .ant-row{
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+    .formHeader{
+      font-size: 1.8rem;
+    }
+    .buttonContainer, .label, .checkbox {
+      font-size: 1.4rem !important;
     }
 
     .ant-col{
@@ -103,6 +127,22 @@
       align-items: center !important;
       padding: 0 !important;
     }
+    .ant-row{
+      align-items: flex-start;
+    }
+    .ant-col{
+      padding: 0 0 2rem 2rem;
+    }
+    .ant-form-item-required{
+      padding: 1rem 0 0 2rem;;
+    }
+    .formHeader{
+      font-size: 1.6rem;
+      padding: 4rem 0 0 0;
+    }
+    .buttonContainer, .label, .checkbox {
+      font-size: 1.2rem !important;
+    }
   
     .formContainer {
       width: 100% !important;
@@ -110,7 +150,7 @@
     }
   
     .inputField, .checkbox {
-      width: 30rem !important;
+      width: 40rem !important;
     }
   
     .ant-form-item {
@@ -122,7 +162,29 @@
       width: 100% !important;
       padding: 1rem !important;
     }
+    .form-item-control {
+      flex: none !important;
   }
+}
+
+@media (max-width: 500px) {
+  .inputField, .checkbox {
+    width: 35rem !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .inputField, .checkbox {
+    width: 32rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .inputField, .checkbox {
+    width: 27rem !important;
+  }
+}
+
   
   
   

@@ -39,7 +39,7 @@ const SignUp = () => {
   );
 
   return (
-    <div className="container">
+    <div className="container-sign">
       <div className="divImg">
         <img
           src="https://raw.githubusercontent.com/DanielJoaco/e-commerce/refs/heads/main/src/assets/logo2.png"
@@ -160,7 +160,7 @@ const SignUp = () => {
           {...{ wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 8 } } }}
         >
           <Checkbox className="checkbox">
-            Acepto los <a href="#">términos y condiciones</a>
+            Acepto los <a href="#" className='terminos'>términos y condiciones</a>
           </Checkbox>
         </Form.Item>
 

@@ -4,7 +4,7 @@ html {
 }
 
 body{
-  background: linear-gradient(135deg, rgba(250, 155, 255, 1), rgba(196, 189, 255, 0.56), rgba(172, 151, 184, 1));
+  background: linear-gradient(135deg, rgba(85, 18, 144, 0.795), rgba(79, 72, 143, 0.603), rgb(131, 94, 153));
   color: white;
 }
 
@@ -36,7 +36,7 @@ body, button, input{
 
 a{
   color: #fbffff;
-  text-shadow: 0.1rem 0.1rem 0.5rem #561290;
+  text-shadow: 0.1rem 0.1rem 0.5rem #a080bd;
   text-decoration: none;
   font-size: 1.6rem;
   margin: 0 0.5rem 0 0.5rem;

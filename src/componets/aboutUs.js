@@ -3,7 +3,7 @@ import '../styles/InfoStyles.css';
 
 const AboutUs = () => {
   return (
-    <div className="container">
+    <div className="container-info">
       <h1 className="main-title">Sobre nosotros</h1>
 
       {/* Quiénes Somos */}

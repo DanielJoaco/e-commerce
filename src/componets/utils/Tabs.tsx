@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Tabs, Tab, Pagination, Stack } from "@mui/material";
 import ProductCards from "./ProductCards.tsx";
 import data from "../../data.json";
+import '../../styles/TabsStyles.css';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -18,7 +19,7 @@ function CustomTabPanel({ children, value, index, ...other }: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={styles.tabPanel}>{children}</Box>}
+      {value === index && <Box className="tab-panel">{children}</Box>}
     </div>
   );
 }
@@ -60,39 +61,33 @@ export default function DynamicTabs() {
   const paginatedContent = currentTabContent.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <Box sx={styles.container}>
-      <Box sx={styles.tabBar}>
+    <Box className="container-tabs">
+      <Box className="tab-bar">
         <Tabs
           value={value}
           onChange={handleChangeTab}
           aria-label="dynamic tabs example"
-          sx={styles.tabs}
+          className="tabs"
         >
-          {tabsConfig.map((tab, index) => (
+            {tabsConfig.map((tab, index) => (
             <Tab
               key={index}
               label={tab.label}
               {...a11yProps(index)}
-              sx={{
-                ...styles.tab,
-                color: value === index ? "#561290" : "white", // Validación para color dinámico
-                "&.Mui-selected": {
-                  color: "#561290",
-                },
-              }}
+              className={`tab ${value === index ? "active" : "inactive"}`}
             />
-          ))}
+            ))}
         </Tabs>
       </Box>
       {tabsConfig.map((tab, index) => (
         <CustomTabPanel key={index} value={value} index={index}>
           <ProductCards table="custom" data={paginatedContent} />
-          <Stack spacing={2} sx={styles.paginationContainer}>
+          <Stack spacing={2} className="pagination-container">
             <Pagination
               count={Math.ceil(currentTabContent.length / itemsPerPage)}
               page={currentPage}
               onChange={handleChangePage}
-              sx={styles.pagination}
+              className="pagination"
             />
           </Stack>
         </CustomTabPanel>
@@ -100,56 +95,3 @@ export default function DynamicTabs() {
     </Box>
   );
 }
-
-const styles = {
-  container: {
-    width: "100%",
-  },
-  tabBar: {
-    borderBottom: 1,
-    borderColor: "divider",
-    display: "flex",
-    justifyContent: "center",
-    width: "100%",
-    background: "linear-gradient(to right, rgba(107, 66, 188, 0.5), rgba(79, 241, 254, 0.5))",
-  },
-  tabs: {
-    "& .MuiTabs-indicator": {
-      backgroundColor: "#c27fc5",
-    },
-  },
-  tab: {
-    fontSize: "2.4rem",
-    textShadow: "0.1rem 0.1rem 0.5rem rgba(85, 18, 144, 0.61)",
-    textTransform: "none",
-    fontFamily: "Lobster, sans-serif",
-    fontWeight: 400,
-    fontStyle: "normal",
-  },
-  tabPanel: {
-    p: 3,
-  },
-  paginationContainer: {
-    mt: 4,
-    alignItems: "center",
-  },
-  pagination: {
-    "& .MuiPaginationItem-root": {
-      fontFamily: "Lobster, sans-serif",
-      padding: "2rem",
-      borderRadius: "10rem",
-      fontSize: "2.4rem",
-      backgroundColor: "rgba(255, 126, 197, 0.8)",
-      boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
-      textShadow: "0.1rem 0.1rem 0.5rem #561290",
-      color: "white",
-      "&:hover": {
-        backgroundColor: "#561290",
-      },
-      "&.Mui-selected": {
-        backgroundColor: "#e033c4",
-        color: "white",
-      },
-    },
-  },
-};
