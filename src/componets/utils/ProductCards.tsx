@@ -165,7 +165,7 @@ const styles = {
   card: {
     width: "32rem",
     height: "55rem",
-    background: "rgba(0, 0, 0, 0.1)",
+    background: "rgba(99, 99, 99, 0.1)",
     borderRadius: "2rem",
     color: "white",
     boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",

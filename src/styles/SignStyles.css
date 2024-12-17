@@ -127,6 +127,10 @@
       align-items: center !important;
       padding: 0 !important;
     }
+    .container-sign{
+      margin: 0 0 5rem 0;
+      background: transparent;
+    }
     .ant-row{
       align-items: flex-start;
     }
@@ -146,6 +150,7 @@
   
     .formContainer {
       width: 100% !important;
+      background-color: transparent;
       padding: 0 0 2rem 0 !important;
     }
   

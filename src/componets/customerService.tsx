@@ -17,7 +17,7 @@ const CustomerService = ({ section }) => {
 
       {/* Políticas de la Empresa */}
       <section id="politicas" className="section-container">
-        <h2 className="section-title">Políticas de la Empresa</h2>
+        <h3 className="section-title">Políticas de la Empresa</h3>
         <p className="text">
           Te agradecemos por formar parte de este gran sueño. Antes de seguir, deseamos compartir nuestros términos contigo para ofrecerte la mejor experiencia posible.
         </p>
@@ -34,7 +34,7 @@ const CustomerService = ({ section }) => {
 
       {/* Políticas de Envíos */}
       <section id="envios" className="section-container">
-        <h2 className="section-title">Políticas de Envíos</h2>
+        <h3 className="section-title">Políticas de Envíos</h3>
         <p className="text">
           Los envíos se realizan desde <strong className="strong-text">Bucaramanga/Santander</strong>. Ofrecemos <strong className="strong-text">entrega gratis</strong> en compras superiores a $70.000. Los tiempos de entrega dependen de tu ubicación, pero nos esforzamos por enviarte los productos lo antes posible.
         </p>
@@ -42,7 +42,7 @@ const CustomerService = ({ section }) => {
 
       {/* Preguntas Frecuentes */}
       <section id="faq" className="section-container">
-        <h2 className="section-title">Preguntas Frecuentes</h2>
+        <h3 className="section-title">Preguntas Frecuentes</h3>
         <p className="text"><strong className="strong-text">Pregunta:</strong> ¿Cómo puedo realizar un pedido?
           <br /><strong className="strong-text">Respuesta:</strong> Puedes realizar tu pedido a través de nuestra página web o contactándonos directamente.
         </p>
