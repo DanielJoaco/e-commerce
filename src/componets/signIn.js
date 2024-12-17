@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
-import '../styles/Sign.css';
+import '../styles/SignStyles.css';
 
 const onFinish = (values) => {
   console.log('Success:', values);

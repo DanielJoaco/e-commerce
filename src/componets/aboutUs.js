@@ -1,66 +1,24 @@
 import React from 'react';
+import '../styles/InfoStyles.css';
 
 const AboutUs = () => {
-  const styles = {
-    aboutUs: {
-      fontFamily: "'Lobster', sans-serif",
-      lineHeight: 1.6,
-      color: '#333',
-      margin: '20px',
-      padding: '20px',
-    },
-    mainTitle: {
-      fontSize: '2.8rem',
-      fontWeight: 'bold',
-      color: '#561290',
-      textAlign: 'center',
-      marginBottom: '2rem',
-      textShadow: '0.1rem 0.1rem 0.5rem white',
-    },
-    sectionContainer: {
-      marginBottom: '3rem',
-      padding: '1.5rem',
-      borderRadius: '8px',
-      backgroundColor: "rgba(0, 0, 0, 0.1)",
-      boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
-    },
-    sectionTitle: {
-      fontSize: '2.2rem',
-      fontWeight: 'bold',
-      color: '#e136c6',
-      marginBottom: '1rem',
-      textShadow: "0.1rem 0.1rem 0.5rem white",
-    },
-    text: {
-      fontSize: '1.6rem',
-      margin: '10px 0',
-      textShadow: "0.1rem 0.1rem 0.5rem #561290",
-      color: "white",
-    },
-    strongText: {
-      color: '#e136c6',
-      fontWeight: 'bold',
-      textShadow: "0.1rem 0.1rem 0.5rem white",
-    },
-  };
-
   return (
-    <div style={styles.aboutUs}>
-      <h1 style={styles.mainTitle}>Sobre nosotros</h1>
+    <div className="container">
+      <h1 className="main-title">Sobre nosotros</h1>
 
       {/* Quiénes Somos */}
-      <section id="quienesSomos" style={styles.sectionContainer}>
-        <h2 style={styles.sectionTitle}>¿Quiénes Somos?</h2>
-        <p style={styles.text}>
+      <section id="quienesSomos" className="section-container">
+        <h2 className="section-title">¿Quiénes Somos?</h2>
+        <p className="text">
           Somos Yane Beauty Store, una empresa dedicada a fortalecer la seguridad y autoestima de nuestros clientes a través de productos y servicios de imagen personal.
           Promovemos la belleza natural y el respeto por la salud mental y física, ayudando a nuestros clientes a alcanzar sus metas personales y profesionales.
         </p>
       </section>
 
       {/* Misión */}
-      <section id="mision" style={styles.sectionContainer}>
-        <h2 style={styles.sectionTitle}>Misión</h2>
-        <p style={styles.text}>
+      <section id="mision" className="section-container">
+        <h2 className="section-title">Misión</h2>
+        <p className="text">
           Nuestra misión es ofrecer productos y servicios diseñados para mejorar la imagen personal y profesional de nuestros clientes. 
           Nos enfocamos en fortalecer la autoestima, el valor propio y el respeto por la belleza natural. Contribuimos al bienestar de nuestros clientes aplicando 
           el principio de que la salud es siempre belleza.
@@ -68,10 +26,10 @@ const AboutUs = () => {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" style={styles.sectionContainer}>
-        <h2 style={styles.sectionTitle}>Contacto</h2>
-        <p style={styles.text}>Contacta con nosotros en: <strong style={styles.strongText}>contacto@yanebeautystore.com</strong></p>
-        <p style={styles.text}>Teléfono: <strong style={styles.strongText}>+57 123 456 7890</strong></p>
+      <section id="contacto" className="section-container">
+        <h2 className="section-title">Contacto</h2>
+        <p className="text">Contacta con nosotros en: <strong className="strong-text">contacto@yanebeautystore.com</strong></p>
+        <p className="text">Teléfono: <strong className="strong-text">+57 123 456 7890</strong></p>
       </section>
     </div>
   );

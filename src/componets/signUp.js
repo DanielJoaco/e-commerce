@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Cascader, Checkbox, Form, Input, Select } from 'antd';
-import '../styles/Sign.css';
+import '../styles/SignStyles.css';
 
 const { Option } = Select;
 

@@ -4,43 +4,45 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import HandleSearch from './utils/handleSearch';
 import logo from '../assets/logo.png';
+import '../styles/HeaderStyles.css';
 
 function Header({ onNavigate }) {
   return (
-    <Box sx={{ flexGrow: 1, maxWidth: "100%" }}>
+    <Box className="header-container">
       <AppBar position="static">
-        <Toolbar className='header'>
-          <a 
-            href='#' 
+        <Toolbar className="header-toolbar">
+          <a
+            href="#!"
             onClick={(e) => {
               e.preventDefault();
-              onNavigate('tabs'); // Navegar a las tablas
+              onNavigate('tabs');
             }}
-            style={{ display: "flex", alignItems: "center" }}
+            className="header-logo-link"
           >
-            <img src={logo} alt='logo' style={{ padding: "0.1rem 1rem 0.1rem", width: "6rem" }} />
-            <h2 id='title_header'>Yane, beauty store</h2>
+            <img src={logo} alt="logo" className="header-logo" />
+            <h2 className="header-title">Yane, beauty store</h2>
           </a>
-          <div className='header' style={{ display: "flex" }} id='search'>
+          <div className="header-search">
             <HandleSearch />
           </div>
-          <div className='header' style={{ display: "flex" }}>
+          <div className="header-links">
             <a
-              href='#'
+              href="#!"
               onClick={(e) => {
                 e.preventDefault();
-                onNavigate('signIn'); // Navegar a Sign In
+                onNavigate('signIn');
               }}
-              style={{ marginRight: "1rem" }}
+              className="header-link"
             >
               Iniciar Sesión
             </a>
             <a
-              href='#'
+              href="#!"
               onClick={(e) => {
                 e.preventDefault();
-                onNavigate('signUp'); // Navegar a Sign Up
+                onNavigate('signUp');
               }}
+              className="header-link"
             >
               Registrarse
             </a>
