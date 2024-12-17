@@ -1,9 +1,5 @@
-import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
+import React, { useState } from "react";
+import { Box, Tabs, Tab, Pagination, Stack } from "@mui/material";
 import ProductCards from "./ProductCards.tsx";
 import data from "../../data.json";
 
@@ -13,19 +9,16 @@ interface TabPanelProps {
   value: number;
 }
 
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
+function CustomTabPanel({ children, value, index, ...other }: TabPanelProps) {
   return (
     <div
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      className="tab-panel"
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={styles.tabPanel}>{children}</Box>}
     </div>
   );
 }
@@ -37,59 +30,43 @@ function a11yProps(index: number) {
   };
 }
 
-// Obtiene las tablas únicas del JSON
 const getUniqueTables = () => {
   const tables = data.map((item) => item.table);
-  return ["all", ...new Set(tables.filter((table) => table))]; // Incluye "all" como la primera pestaña
+  return ["all", ...new Set(tables.filter((table) => table))];
 };
 
 export default function DynamicTabs() {
-  const [value, setValue] = React.useState(0); // Controla la pestaña activa
-  const [currentPage, setCurrentPage] = React.useState(1); // Controla la página activa
-  const itemsPerPage = 6; // Número de elementos por página
+  const [value, setValue] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
-    setCurrentPage(1); // Reinicia la paginación al cambiar de pestaña
+    setCurrentPage(1);
   };
 
   const handleChangePage = (event: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
 
-  // Crear las pestañas dinámicamente
   const uniqueTables = getUniqueTables();
   const tabsConfig = uniqueTables.map((table) => ({
     label: table === "all" ? "Todos" : table.charAt(0).toUpperCase() + table.slice(1),
-    content: data.filter((item) => table === "all" || item.table === table), // Filtra los elementos según la tabla
+    content: data.filter((item) => table === "all" || item.table === table),
   }));
 
-  // Calcula los productos visibles en la página actual
   const currentTabContent = tabsConfig[value]?.content || [];
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedContent = currentTabContent.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box
-        sx={{
-          borderBottom: 1,
-          borderColor: "divider",
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-          background: "linear-gradient(to right, rgba(107, 66, 188, 0.5), rgba(79, 241, 254, 0.5))",
-        }}
-      >
+    <Box sx={styles.container}>
+      <Box sx={styles.tabBar}>
         <Tabs
           value={value}
           onChange={handleChangeTab}
           aria-label="dynamic tabs example"
-          sx={{
-            "& .MuiTabs-indicator": {
-              backgroundColor: "#c27fc5",
-            },
-          }}
+          sx={styles.tabs}
         >
           {tabsConfig.map((tab, index) => (
             <Tab
@@ -97,16 +74,11 @@ export default function DynamicTabs() {
               label={tab.label}
               {...a11yProps(index)}
               sx={{
-                fontSize: "2.4rem",
-                color: value === index ? "#561290" : "white",
-                textShadow: "0.1rem 0.1rem 0.5rem rgba(85, 18, 144, 0.61)",
-                textTransform: "none",
+                ...styles.tab,
+                color: value === index ? "#561290" : "white", // Validación para color dinámico
                 "&.Mui-selected": {
                   color: "#561290",
                 },
-                fontFamily: "Lobster, sans-serif",
-                fontWeight: 400,
-                fontStyle: "normal",
               }}
             />
           ))}
@@ -115,34 +87,69 @@ export default function DynamicTabs() {
       {tabsConfig.map((tab, index) => (
         <CustomTabPanel key={index} value={value} index={index}>
           <ProductCards table="custom" data={paginatedContent} />
-            <Stack spacing={2} sx={{ mt: 4, alignItems: "center" }}>
+          <Stack spacing={2} sx={styles.paginationContainer}>
             <Pagination
               count={Math.ceil(currentTabContent.length / itemsPerPage)}
               page={currentPage}
               onChange={handleChangePage}
-              sx={{
-              "& .MuiPaginationItem-root": {
-                fontFamily: "Lobster, sans-serif",
-                padding: "2rem",
-                borderRadius: "10rem",
-                fontSize: "2.4rem",
-                backgroundColor: "rgba(255, 126, 197, 0.8)",
-                boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
-                textShadow: '0.1rem 0.1rem 0.5rem #561290',
-                color: "white",
-                "&:hover": {
-                backgroundColor: "#561290",
-                },
-                "&.Mui-selected": {
-                backgroundColor: "#e033c4",
-                color: "white",
-                },
-              },
-              }}
+              sx={styles.pagination}
             />
-            </Stack>
+          </Stack>
         </CustomTabPanel>
       ))}
     </Box>
   );
 }
+
+const styles = {
+  container: {
+    width: "100%",
+  },
+  tabBar: {
+    borderBottom: 1,
+    borderColor: "divider",
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    background: "linear-gradient(to right, rgba(107, 66, 188, 0.5), rgba(79, 241, 254, 0.5))",
+  },
+  tabs: {
+    "& .MuiTabs-indicator": {
+      backgroundColor: "#c27fc5",
+    },
+  },
+  tab: {
+    fontSize: "2.4rem",
+    textShadow: "0.1rem 0.1rem 0.5rem rgba(85, 18, 144, 0.61)",
+    textTransform: "none",
+    fontFamily: "Lobster, sans-serif",
+    fontWeight: 400,
+    fontStyle: "normal",
+  },
+  tabPanel: {
+    p: 3,
+  },
+  paginationContainer: {
+    mt: 4,
+    alignItems: "center",
+  },
+  pagination: {
+    "& .MuiPaginationItem-root": {
+      fontFamily: "Lobster, sans-serif",
+      padding: "2rem",
+      borderRadius: "10rem",
+      fontSize: "2.4rem",
+      backgroundColor: "rgba(255, 126, 197, 0.8)",
+      boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
+      textShadow: "0.1rem 0.1rem 0.5rem #561290",
+      color: "white",
+      "&:hover": {
+        backgroundColor: "#561290",
+      },
+      "&.Mui-selected": {
+        backgroundColor: "#e033c4",
+        color: "white",
+      },
+    },
+  },
+};

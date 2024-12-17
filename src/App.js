@@ -4,7 +4,7 @@ import Header from './componets/header.js';
 import Footer from './componets/Footer.js';
 import BasicTabs from './componets/utils/Tabs.tsx';
 import AboutUs from './componets/aboutUs.js';
-import CustomerService from './componets/customerService.js';
+import CustomerService from './componets/customerService.tsx';
 import SignIn from './componets/signIn.js';
 import SignUp from './componets/signUp.js';
 

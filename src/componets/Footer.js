@@ -40,10 +40,10 @@ const Footer = ({ onNavigate }) => {
           <ul style={styles.list}>
             <li>
               <button
-                onClick={() => onNavigate('customerService', 'devoluciones')}
+                onClick={() => onNavigate('customerService', 'politicas')}
                 style={styles.link}
               >
-                Política de Devoluciones
+                Política de la empresa
               </button>
             </li>
             <li>

@@ -4,7 +4,7 @@ html {
 }
 
 body{
-  background: #c4bdffd0;
+  background: linear-gradient(135deg, rgba(250, 155, 255, 1), rgba(196, 189, 255, 0.56), rgba(172, 151, 184, 1));
   color: white;
 }
 
@@ -52,6 +52,11 @@ a{
 
 .App {
   text-align: center;
+}
+.ant-form-item-explain-error, .ant-select-item-option-content, .ant-cascader-menu-item-content, .ant-input, .ant-tooltip-inner{
+  font-family: "Lobster", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 @media (prefers-reduced-motion: no-preference) {

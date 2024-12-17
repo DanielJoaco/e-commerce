@@ -3,6 +3,7 @@ import { Box, Card, CardContent, CardMedia, Typography, Button, Grid } from "@mu
 import { Star, StarHalf, StarOutline } from "@mui/icons-material";
 import data from "../../data.json";
 
+// Interfaces
 interface Product {
   id: number;
   table: string;
@@ -20,9 +21,10 @@ interface ProductCardsProps {
   data?: Product[];
 }
 
+// Component
 const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [quantities, setQuantities] = useState<{ [key: number]: number }>({}); // Cantidades seleccionadas
+  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
 
   useEffect(() => {
     let productsToFilter: Product[] = [];
@@ -37,14 +39,19 @@ const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
 
     setFilteredProducts(productsToFilter);
 
-    // Inicializar cantidades a 0 para cada producto filtrado
+    // Initialize quantities
     const initialQuantities = productsToFilter.reduce((acc, product) => {
-      acc[product.id] = 1; // Inicializa con 0
+      acc[product.id] = 1; // Default quantity is 1
       return acc;
     }, {} as { [key: number]: number });
 
     setQuantities(initialQuantities);
   }, [table, data]);
+
+  const handleQuantityChange = (id: number, value: number, max: number) => {
+    const sanitizedValue = Math.max(0, Math.min(value, max));
+    setQuantities((prev) => ({ ...prev, [id]: sanitizedValue }));
+  };
 
   const renderStars = (stars: number) => {
     const fullStars = Math.floor(stars);
@@ -54,200 +61,78 @@ const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
     return (
       <>
         {[...Array(fullStars)].map((_, index) => (
-          <Star key={`full-${index}`} sx={{ color: "#FFD700", fontSize: "2rem" }} />
+          <Star key={`full-${index}`} sx={styles.starIcon} />
         ))}
-        {halfStar === 1 && <StarHalf sx={{ color: "#FFD700", fontSize: "2rem" }} />}
+        {halfStar === 1 && <StarHalf sx={styles.starIcon} />}
         {[...Array(emptyStars)].map((_, index) => (
-          <StarOutline key={`empty-${index}`} sx={{ color: "#FFD700", fontSize: "2rem" }} />
+          <StarOutline key={`empty-${index}`} sx={styles.starIcon} />
         ))}
       </>
     );
   };
 
-  const handleQuantityChange = (id: number, value: number, max: number) => {
-    const sanitizedValue = Math.max(0, Math.min(value, max)); // Asegura que esté entre 0 y max
-    setQuantities((prev) => ({ ...prev, [id]: sanitizedValue }));
-  };
-
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={styles.gridContainer}>
       <Grid container spacing={4}>
         {filteredProducts.map((product) => (
           <Grid item xs={12} sm={6} md={4} key={product.id}>
-            <Box sx={{ position: "relative" }}>
+            <Box sx={styles.cardWrapper}>
               {product.quantity < 1 && (
-                <Button
-                  disabled
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%) rotate(-45deg)",
-                    fontSize: "2.6rem",
-                    backgroundColor: "#F9CA7F",
-                    color: "red",
-                    fontWeight: "bold",
-                    textTransform: "uppercase",
-                    pointerEvents: "none",
-                    zIndex: 1,
-                    boxShadow: "0.4rem 0.4rem 2rem #0000004d",
-                    borderRadius: "1rem",
-                  }}
-                >
+                <Button disabled sx={styles.outOfStock}>
                   ¡Agotado!
                 </Button>
               )}
-              <Card
-                sx={{
-                  width: "32rem",
-                  height: "55rem",
-                  background: "linear-gradient(135deg, rgba(250, 155, 255, 1), rgba(196, 189, 255, 0.56), rgba(172, 151, 184, 1))",
-                  borderRadius: "2rem",
-                  color: "white",
-                  boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
-                  margin: "auto",
-                  textShadow: "0.1rem 0.1rem 0.5rem #561290",
-                }}
-              >
+              <Card sx={styles.card}>
                 <CardMedia
                   component="img"
-                  sx={{
-                    height: "20rem",
-                    width: "70%",
-                    maxWidth: "100%",
-                    margin: "2rem auto",
-                    objectFit: "contain",
-                    backgroundColor: "rgba(252, 185, 255, 0.3)",
-                    borderRadius: "120rem",
-                    filter: "drop-shadow(0 0 10px white)",
-                  }}
+                  sx={styles.cardMedia}
                   image={product.image}
                   alt={product.name}
                 />
-                <CardContent>
-                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                <CardContent sx={styles.cardContent}>
+                  <Box sx={styles.starsContainer}>
                     {renderStars(product.stars)}
-                    <Typography
-                      variant="body2"
-                      color="white"
-                      sx={{
-                        ml: 1,
-                        fontSize: "1.4rem",
-                        fontFamily: "'Lobster', sans-serif",
-                        fontWeight: 400,
-                      }}
-                    >
+                    <Typography variant="body2" color="white" sx={styles.reviewsText}>
                       | {product.reviews} opiniones
                     </Typography>
                   </Box>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    sx={{
-                      fontSize: "2.4rem",
-                      fontFamily: "'Lobster', sans-serif",
-                      fontWeight: 600,
-                    }}
-                  >
+                  <Typography gutterBottom variant="h5" component="div" sx={styles.productName}>
                     {product.name}
                   </Typography>
-                  <Typography
-                    variant="h4"
-                    color="#F9CA7F"
-                    sx={{
-                      mt: 2,
-                      fontSize: "2.8rem",
-                      fontFamily: "'Lobster', sans-serif",
-                      fontWeight: 600,
-                    }}
-                  >
+                  <Typography variant="h4" color="#F9CA7F" sx={styles.productPrice}>
                     ${product.price.toFixed(0)}
                   </Typography>
-                  <Box sx={{ mt: 2, display: "flex", alignItems: "center", flexDirection: "column" }}>
-                    <Box sx={{ display: "flex", alignItems: "center", padding:"0 0 1rem 0" }}>
-                      <Button
-                        variant="outlined"
-                        onClick={() =>
-                          handleQuantityChange(product.id, quantities[product.id] - 1, product.quantity)
-                        }
-                        disabled={quantities[product.id] <= 0 || product.quantity < 1}
-                        sx={{
-                          fontFamily: "Lobster, sans-serif",
-                          borderRadius: "10rem",
-                          fontSize: "2rem",
-                          backgroundColor: "rgba(255, 126, 197, 0.8)",
-                          boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
-                          textShadow: '0.1rem 0.1rem 0.5rem #561290',
-                          color: "white",
-                          padding: "0",
-                          minWidth: "4rem",
-                          "&:hover": {
-                            backgroundColor: "#561290",
-                            },
-                        }}
-                      >
-                        -
-                      </Button>
-                      <Box
-                        sx={{
-                          mx: 2,
-                          width: "6rem",
-                          height: "3rem",
-                          fontSize: "1.6rem",
-                          fontWeight: 600,
-                          color: "#000",
-                          textAlign: "center",
-                          lineHeight: "3rem",
-                          border: "1px solid #ccc",
-                          borderRadius: "2rem",
-                          backgroundColor: product.quantity < 1 ? "#f9f9f9" : "#fff",
-                        }}
-                      >
-                        {quantities[product.id] || 0}
-                      </Box>
-                      <Button
-                        variant="outlined"
-                        onClick={() =>
-                          handleQuantityChange(product.id, quantities[product.id] + 1, product.quantity)
-                        }
-                        disabled={quantities[product.id] >= product.quantity || product.quantity < 1}
-                        sx={{
-                          fontFamily: "Lobster, sans-serif",
-                          borderRadius: "10rem",
-                          fontSize: "2rem",
-                          backgroundColor: "rgba(255, 126, 197, 0.8)",
-                          boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
-                          textShadow: '0.1rem 0.1rem 0.5rem #561290',
-                          color: "white",
-                          padding: "0",
-                          minWidth: "4rem",
-                          "&:hover": {
-                            backgroundColor: "#561290",
-                            },
-                        }}
-                      >
-                        +
-                      </Button>
-                    </Box>
+                  <Box sx={styles.quantityContainer}>
                     <Button
-                      variant="contained"
-                      color="success"
-                      sx={{
-                        ml: 2,
-                        fontSize: "1.6rem",
-                        borderRadius: "2rem",
-                        fontFamily: "'Lobster', sans-serif",
-                        fontWeight: 400,
-                        textShadow: "0.1rem 0.1rem 0.5rem #561290",
-                        textTransform: "none",
-                        backgroundColor: "#e136c6",
-                      }}
-                      disabled={product.quantity < 1}
+                      variant="outlined"
+                      onClick={() =>
+                        handleQuantityChange(product.id, quantities[product.id] - 1, product.quantity)
+                      }
+                      disabled={quantities[product.id] <= 0 || product.quantity < 1}
+                      sx={styles.quantityButton}
                     >
-                      Agregar al carrito
+                      -
+                    </Button>
+                    <Box sx={styles.quantityBox}>{quantities[product.id] || 0}</Box>
+                    <Button
+                      variant="outlined"
+                      onClick={() =>
+                        handleQuantityChange(product.id, quantities[product.id] + 1, product.quantity)
+                      }
+                      disabled={quantities[product.id] >= product.quantity || product.quantity < 1}
+                      sx={styles.quantityButton}
+                    >
+                      +
                     </Button>
                   </Box>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    sx={styles.addToCartButton}
+                    disabled={product.quantity < 1}
+                  >
+                    Agregar al carrito
+                  </Button>
                 </CardContent>
               </Card>
             </Box>
@@ -256,6 +141,127 @@ const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
       </Grid>
     </Box>
   );
+};
+
+// Styles
+const styles = {
+  gridContainer: {
+    p: 4,
+  },
+  cardWrapper: {
+    position: "relative",
+  },
+  outOfStock: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%) rotate(-45deg)",
+    fontSize: "2.6rem",
+    backgroundColor: "#F9CA7F",
+    color: "red",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    pointerEvents: "none",
+    zIndex: 1,
+    boxShadow: "0.4rem 0.4rem 2rem #0000004d",
+    borderRadius: "1rem",
+  },
+  card: {
+    width: "32rem",
+    height: "55rem",
+    background: "rgba(0, 0, 0, 0.1)",
+    borderRadius: "2rem",
+    color: "white",
+    boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
+    margin: "auto",
+    textShadow: "0.1rem 0.1rem 0.5rem #561290",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  cardContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  cardMedia: {
+    height: "20rem",
+    width: "70%",
+    maxWidth: "100%",
+    margin: "2rem auto",
+    objectFit: "contain",
+    backgroundColor: "rgba(252, 185, 255, 0.3)",
+    borderRadius: "120rem",
+    filter: "drop-shadow(0 0 10px white)",
+  },
+  starsContainer: {
+    display: "flex",
+    alignItems: "center",
+    mb: 2,
+  },
+  starIcon: {
+    color: "#FFD700",
+    fontSize: "2rem",
+  },
+  reviewsText: {
+    ml: 1,
+    fontSize: "1.4rem",
+    fontFamily: "'Lobster', sans-serif",
+    fontWeight: 400,
+  },
+  productName: {
+    fontSize: "2.4rem",
+    fontFamily: "'Lobster', sans-serif",
+    fontWeight: 600,
+  },
+  productPrice: {
+    mt: 2,
+    fontSize: "2.8rem",
+    fontFamily: "'Lobster', sans-serif",
+    fontWeight: 600,
+  },
+  quantityContainer: {
+    display: "flex",
+    alignItems: "center",
+    padding: "1rem 0",
+  },
+  quantityButton: {
+    fontFamily: "Lobster, sans-serif",
+    borderRadius: "10rem",
+    fontSize: "2rem",
+    backgroundColor: "rgba(255, 126, 197, 0.8)",
+    boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
+    textShadow: "0.1rem 0.1rem 0.5rem #561290",
+    color: "white",
+    padding: "0",
+    minWidth: "4rem",
+    "&:hover": {
+      backgroundColor: "#561290",
+    },
+  },
+  quantityBox: {
+    mx: 2,
+    width: "6rem",
+    height: "3rem",
+    fontSize: "1.6rem",
+    fontWeight: 600,
+    color: "#000",
+    textAlign: "center",
+    lineHeight: "3rem",
+    border: "1px solid #ccc",
+    borderRadius: "2rem",
+    backgroundColor: "#fff",
+  },
+  addToCartButton: {
+    ml: 2,
+    fontSize: "1.6rem",
+    borderRadius: "2rem",
+    fontFamily: "'Lobster', sans-serif",
+    fontWeight: 400,
+    textShadow: "0.1rem 0.1rem 0.5rem #561290",
+    textTransform: "none",
+    backgroundColor: "#e136c6",
+  },
 };
 
 export default ProductCards;
