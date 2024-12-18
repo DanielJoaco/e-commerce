@@ -1,0 +1,9 @@
+.menu-navigation{
+    background-color: rgb(86, 18, 144);
+    font-family: "Lobster", sans-serif;
+    width: 25%;
+}
+
+.ant-menu-sub{
+    background-color: rgba(0, 0, 0, 0.596) !important;
+}

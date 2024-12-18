@@ -2,40 +2,36 @@ import React, { useState } from "react";
 import { Menu } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
 import data from "../../data.json";
+import "../../styles/MenuStyles.css";
 
-const MenuNavigation = () => {
-  // Agrupamos productos por categorías y subcategorías
-  const categoryData = data.reduce((acc, item) => {
-    const { table: category, subcategory } = item;
-    if (!acc[category]) {
-      acc[category] = {};
-    }
-    if (!acc[category][subcategory]) {
-      acc[category][subcategory] = [];
-    }
-    acc[category][subcategory].push(item);
-    return acc;
-  }, {});
+const MenuNavigation = ({ onFilter }) => {
+  const menuItems = Object.keys(data).map((category) => {
+    const subcategories = data[category].reduce((acc, item) => {
+      const { subcategory } = item;
+      if (!acc[subcategory]) {
+        acc[subcategory] = [];
+      }
+      acc[subcategory].push(item);
+      return acc;
+    }, {});
+    
 
-  // Convertimos el objeto en un array para construir el menú
-  const menuItems = Object.keys(categoryData).map((category) => ({
-    key: category,
-    icon: <AppstoreOutlined />,
-    label: `${category.charAt(0).toUpperCase() + category.slice(1)} (${Object.values(categoryData[category])
-      .flat()
-      .length})`,
-    children: Object.keys(categoryData[category]).map((subcategory) => ({
-      key: `${category}-${subcategory}`,
-      label: `${subcategory.charAt(0).toUpperCase() + subcategory.slice(1)} (${categoryData[category][subcategory].length})`,
-    })),
-  }));
+    return {
+      key: category,
+      icon: <AppstoreOutlined />,
+      label: `${category.charAt(0).toUpperCase() + category.slice(1)} (${data[category].length})`,
+      children: Object.keys(subcategories).map((subcategory) => ({
+        key: `${category}-${subcategory}`,
+        label: `${subcategory.charAt(0).toUpperCase() + subcategory.slice(1)} (${subcategories[subcategory].length})`,
+      })),
+    };
+  });
 
-  const [current, setCurrent] = useState("1");
+  const [current, setCurrent] = useState("");
 
   const handleClick = (e) => {
     setCurrent(e.key);
-    console.log(`Selected category: ${e.key}`);
-    // Aquí puedes manejar la lógica para filtrar productos por la categoría o subcategoría seleccionada.
+    onFilter(e.key); // Call the filter callback
   };
 
   return (
@@ -45,6 +41,7 @@ const MenuNavigation = () => {
       mode="inline"
       theme="dark"
       items={menuItems}
+      className="menu-navigation"
     />
   );
 };

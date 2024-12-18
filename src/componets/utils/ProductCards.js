@@ -1,59 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Box, Card, CardContent, CardMedia, Typography, Button, Grid } from "@mui/material";
 import { Star, StarHalf, StarOutline } from "@mui/icons-material";
-import data from "../../data.json";
 
-// Interfaces
-interface Product {
-  id: number;
-  table: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  stars: number;
-  reviews: number;
-  quantity: number;
-}
-
-interface ProductCardsProps {
-  table?: string;
-  data?: Product[];
-}
-
-// Component
-const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+const ProductCards = ({ data }) => {
+  const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
-    let productsToFilter: Product[] = [];
-
-    if (data) {
-      productsToFilter = data;
-    } else if (table) {
-      const allProducts: Product[] = data as unknown as Product[];
-      productsToFilter =
-        table === "all" ? allProducts : allProducts.filter((item) => item.table === table);
-    }
-
-    setFilteredProducts(productsToFilter);
-
-    // Initialize quantities
-    const initialQuantities = productsToFilter.reduce((acc, product) => {
-      acc[product.id] = 1; // Default quantity is 1
+    // Inicializamos las cantidades para los productos mostrados
+    const initialQuantities = data.reduce((acc, product) => {
+      acc[product.id] = 1; // Cantidad predeterminada es 1
       return acc;
-    }, {} as { [key: number]: number });
-
+    }, {});
     setQuantities(initialQuantities);
-  }, [table, data]);
+  }, [data]);
 
-  const handleQuantityChange = (id: number, value: number, max: number) => {
+  const handleQuantityChange = (id, value, max) => {
     const sanitizedValue = Math.max(0, Math.min(value, max));
     setQuantities((prev) => ({ ...prev, [id]: sanitizedValue }));
   };
 
-  const renderStars = (stars: number) => {
+  const renderStars = (stars) => {
     const fullStars = Math.floor(stars);
     const halfStar = stars % 1 >= 0.5 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStar;
@@ -74,7 +40,7 @@ const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
   return (
     <Box sx={styles.gridContainer}>
       <Grid container spacing={4}>
-        {filteredProducts.map((product) => (
+        {data.map((product) => (
           <Grid item xs={12} sm={6} md={4} key={product.id}>
             <Box sx={styles.cardWrapper}>
               {product.quantity < 1 && (
@@ -143,7 +109,6 @@ const ProductCards: React.FC<ProductCardsProps> = ({ table, data }) => {
   );
 };
 
-// Styles
 const styles = {
   gridContainer: {
     p: 4,
