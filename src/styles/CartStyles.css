@@ -1,0 +1,139 @@
+.cart-icon-button {
+    position: relative !important;
+}
+  
+.cart-drawer {
+    background-color: transparent !important;
+    color: white !important;
+    border-radius: 2rem 0 0 2rem !important;
+    height: auto !important;
+}
+  
+.cart-container {
+    padding: 1.6rem !important;
+    height: auto !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    text-shadow: 0.1rem 0.1rem 0.5rem #9f57df !important;
+}
+  
+.css-1miy0lu-MuiTypography-root {
+    margin-bottom: 1.6rem !important;
+    font-weight: bold !important;
+    font-family: "Lobster", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 2.4rem !important;
+    border-bottom: 0.1rem solid rgb(255, 255, 255) !important;
+}
+  
+.cart-items-container {
+    display: flex !important;
+    flex-direction: column !important;
+}
+  
+.cart-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 1.6rem !important;
+    padding-bottom: 2rem !important;
+    border-bottom: 0.1rem solid rgb(255, 255, 255) !important;
+}
+  
+.cart-item-image {
+    width: 6rem !important;
+    height: 6rem !important;
+    object-fit: contain !important;
+    background-color: rgba(218, 218, 218, 0.3) !important;
+    border-radius: 10000rem !important;
+}
+  
+.cart-item-details {
+    flex: 1 !important;
+    margin-left: 1.6rem !important;
+}
+  
+.cart-item-quantity {
+    display: flex !important;
+    align-items: center !important;
+    margin-top: 0.8rem !important;
+
+}
+
+.cart-item-name{
+    font-family: "Lobster", sans-serif !important;
+    font-size: 1.6rem !important;
+}
+
+.cart-item-quantity{
+    font-family: "Lobster", sans-serif !important;
+    font-size: 1.2rem !important;
+    font-weight: 200 !important;
+}
+  
+.cart-item-quantity-text {
+    margin: 0 0.8rem !important;
+    font-weight: bold !important;
+    font-family: "Lobster", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 1.4rem !important;
+}
+  
+.cart-quantity-button {
+    font-family: "Lobster, sans-serif" !important;
+    border-radius: 10rem !important;
+    font-size: 1.6rem !important;
+    background-color: rgba(115, 104, 214, 0.6) !important;
+    box-shadow: 0.4rem 0.4rem 1.0rem #0000004d !important;
+    text-shadow: 0.1rem 0.1rem 0.5rem #561290 !important;
+    color: white !important;
+    padding: 0 !important;
+    min-width: 3rem !important;
+    &:hover {
+        background-color: #561290 !important;
+    }
+    &:disabled {
+        background-color: rgba(71, 65, 129, 0.199) !important;
+        color: rgba(44, 44, 44, 0.7) !important;
+    }
+}
+  
+.cart-item-total {
+    text-align: right !important;
+    margin-left: 2rem !important;
+}
+  
+.cart-remove-button {
+    margin-top: 0.8rem !important;
+    font-family: "Lobster", sans-serif !important;
+    color: rgb(212, 65, 200) !important;
+    text-transform: none !important;
+    font-size: 1.4rem !important;
+    text-shadow: 0.1rem 0.1rem 0.5rem #894cbe !important;
+    &:hover {
+        color: #854bb8 !important;
+    }
+}
+  
+.cart-total {
+    margin-top: 1.6rem !important;
+    font-weight: 400 !important;
+}
+  
+.cart-checkout-button {
+    margin-top: 1.6rem !important;
+    border-radius: 2rem !important;
+    font-family: "Lobster", sans-serif !important;
+    font-size: 1.4rem !important;
+    text-transform: none !important;    
+}
+  
+.cart-empty-message {
+    text-align: center !important;
+    margin-top: 1.6rem !important;
+    color: rgb(255, 255, 255) !important;
+    font-family: "Lobster", sans-serif !important;
+    font-size: 2rem !important;
+    padding-bottom: 5rem;
+}

@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import HandleSearch from './utils/handleSearch';
 import logo from '../assets/logo.png';
 import '../styles/HeaderStyles.css';
+import Cart from "./utils/Cart.js";
 
 function Header({ onNavigate }) {
   return (
@@ -46,6 +47,7 @@ function Header({ onNavigate }) {
             >
               Registrarse
             </a>
+              <Cart />
           </div>
         </Toolbar>
       </AppBar>

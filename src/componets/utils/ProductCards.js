@@ -6,7 +6,6 @@ const ProductCards = ({ data }) => {
   const [quantities, setQuantities] = useState({});
 
   useEffect(() => {
-    // Inicializamos las cantidades para los productos mostrados
     const initialQuantities = data.reduce((acc, product) => {
       acc[product.id] = 1; // Cantidad predeterminada es 1
       return acc;
@@ -17,6 +16,48 @@ const ProductCards = ({ data }) => {
   const handleQuantityChange = (id, value, max) => {
     const sanitizedValue = Math.max(0, Math.min(value, max));
     setQuantities((prev) => ({ ...prev, [id]: sanitizedValue }));
+  };
+
+  const updateCartInLocalStorage = (cart) => {
+    localStorage.setItem("ecommerce_cart", JSON.stringify(cart));
+    const storageEvent = new Event("storage"); // Genera un evento de almacenamiento
+    window.dispatchEvent(storageEvent);
+  };
+
+  const handleAddToCart = (product) => {
+    const existingCart = JSON.parse(localStorage.getItem("ecommerce_cart")) || [];
+    const cartProductIndex = existingCart.findIndex((item) => item.id === product.id);
+
+    let alertMessage = "";
+
+    if (cartProductIndex > -1) {
+      const cartProduct = existingCart[cartProductIndex];
+
+      if (cartProduct.quantity + quantities[product.id] > product.quantity) {
+        cartProduct.quantity = product.quantity;
+        alertMessage = "Ya han sido agregados la cantidad máxima de productos";
+      } else {
+        cartProduct.quantity += quantities[product.id];
+        alertMessage = "Producto agregado al carrito";
+      }
+    } else {
+      const quantityToAdd = Math.min(quantities[product.id], product.quantity);
+      existingCart.push({
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        quantity: quantityToAdd,
+        maxQuantity: product.quantity,
+      });
+      alertMessage = quantityToAdd === product.quantity
+        ? "Ya han sido agregados la cantidad máxima de productos"
+        : "Producto agregado al carrito";
+    }
+
+    updateCartInLocalStorage(existingCart);
+
+    if (alertMessage) alert(alertMessage);
   };
 
   const renderStars = (stars) => {
@@ -96,6 +137,7 @@ const ProductCards = ({ data }) => {
                     color="success"
                     sx={styles.addToCartButton}
                     disabled={product.quantity < 1}
+                    onClick={() => handleAddToCart(product)}
                   >
                     Agregar al carrito
                   </Button>
@@ -108,7 +150,6 @@ const ProductCards = ({ data }) => {
     </Box>
   );
 };
-
 const styles = {
   gridContainer: {
     p: 4,

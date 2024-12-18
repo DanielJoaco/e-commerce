@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Tabs, Tab, Pagination, Stack } from "@mui/material";
 import ProductCards from "./ProductCards";
-
 import data from "../../data.json";
 import "../../styles/TabsStyles.css";
 import MenuNavigation from "./menu-navigation.js";
