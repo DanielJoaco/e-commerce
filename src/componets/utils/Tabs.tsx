@@ -3,6 +3,7 @@ import { Box, Tabs, Tab, Pagination, Stack } from "@mui/material";
 import ProductCards from "./ProductCards.tsx";
 import data from "../../data.json";
 import '../../styles/TabsStyles.css';
+import MenuNavigation from "./menu-navigation.js";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -81,15 +82,18 @@ export default function DynamicTabs() {
       </Box>
       {tabsConfig.map((tab, index) => (
         <CustomTabPanel key={index} value={value} index={index}>
-          <ProductCards table="custom" data={paginatedContent} />
-          <Stack spacing={2} className="pagination-container">
-            <Pagination
+          <div className="div-container-tabs">
+            <MenuNavigation />
+            <ProductCards table="custom" data={paginatedContent} />
+            <Stack spacing={2} className="pagination-container">
+            </Stack>
+          </div>
+          <Pagination
               count={Math.ceil(currentTabContent.length / itemsPerPage)}
               page={currentPage}
               onChange={handleChangePage}
               className="pagination"
             />
-          </Stack>
         </CustomTabPanel>
       ))}
     </Box>

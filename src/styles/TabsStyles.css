@@ -43,6 +43,10 @@
     border-top: 0.1rem solid rgb(86, 18, 144);
   }
   
+  .div-container-tabs{
+    display: flex;
+  }
+
   /* Pagination container */
   .pagination-container {
     margin-top: 4rem;

@@ -165,7 +165,7 @@ const styles = {
   card: {
     width: "32rem",
     height: "55rem",
-    background: "rgba(99, 99, 99, 0.1)",
+    background: "rgba(177, 177, 177, 0.1)",
     borderRadius: "2rem",
     color: "white",
     boxShadow: "0.4rem 0.4rem 1.0rem #0000004d",
@@ -186,7 +186,7 @@ const styles = {
     maxWidth: "100%",
     margin: "2rem auto",
     objectFit: "contain",
-    backgroundColor: "rgba(252, 185, 255, 0.3)",
+    backgroundColor: "rgba(218, 218, 218, 0.3)",
     borderRadius: "10000rem",
     filter: "drop-shadow(0 0 10px white)",
   },
