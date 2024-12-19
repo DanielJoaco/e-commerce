@@ -27,7 +27,7 @@
   /* Tab styles */
   .tabs {
     & .MuiTabs-indicator {
-      background-color:   rgb(86, 18, 144);
+      background-color:   transparent;
     }
   }
   
@@ -104,9 +104,9 @@
     padding: 1rem 2rem 1rem 2rem !important;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     html{
-      font-size: 50%;
+      font-size: 55%;
     }
     .pagination {
       & .MuiPaginationItem-root {
@@ -115,15 +115,54 @@
     }
 }
 
-@media (max-width: 600px) {
-  html{
-    font-size: 40%;
-  }
+@media (max-width: 670px) {
   .menu-navigation{
     display: none;
   }
   .menu-navigation-mobile{
     display: block;
+  }
+}
+
+@media (max-width: 540px) {
+  .css-1wcaknn{
+    padding: 3.3rem 0 1rem 2.5rem !important;
+  }
+  .css-4z7gnm-MuiGrid-root>.MuiGrid-item {
+    padding: 1rem 0 1rem 1rem  !important;
+  }
+  .MuiCard-root{
+    width: 20rem !important;
+    height: 40rem !important;
+  }
+  .MuiCardMedia-root{
+    height: 12rem !important;
+  }
+  .MuiSvgIcon-root{
+    width: 1.5rem !important;
+  }
+  .MuiTypography-body2{
+    font-size: 1.2rem !important;
+  }
+  .MuiCardContent-root{
+    padding: 0 1rem 0 0 !important;
+  }
+  .MuiCardContent-root h4, .MuiTypography-gutterBottom{
+    font-size: 1.6rem !important;
+  }
+  .MuiButton-outlinedSizeMedium{
+    font-size: 1.4rem !important;
+    height: 3rem !important;
+    width: 3rem !important;
+    border-radius: 10rem !important;
+  }
+  .css-1msokfr{
+    font-size: 1.2rem !important;
+    width: 3rem !important;
+  }
+  .MuiButton-containedSuccess{
+    font-size: 1.4rem !important;
+    margin-top: 1rem !important;
   }
 }
   

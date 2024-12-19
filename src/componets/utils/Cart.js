@@ -53,6 +53,30 @@ const Cart = () => {
     localStorage.setItem("ecommerce_cart", JSON.stringify(updatedCart));
   };
 
+  // Función para enviar el mensaje de WhatsApp
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      alert("El carrito está vacío");
+      return;
+    }
+
+    const total = cartItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
+    let message = "Hola, quisiera comprar estos productos:\n\n";
+
+    cartItems.forEach((item) => {
+      message += `${item.name} - ${item.quantity} unidades: $${(item.quantity * item.price).toFixed(0)}\n`;
+    });
+
+    message += `\nTotal de la compra: $${total.toFixed(0)}`;
+
+    // Codificar el mensaje para URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://api.whatsapp.com/send?phone=+573023559672&text=${encodedMessage}`;
+
+    // Abrir WhatsApp
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <>
       <IconButton
@@ -69,6 +93,7 @@ const Cart = () => {
         open={isOpen}
         onClose={() => setIsOpen(false)}
         classes={{ paper: "cart-drawer" }}
+        disableScrollLock
       >
         <div className="cart-container">
           <Typography variant="h6" className="cart-title">
@@ -78,7 +103,11 @@ const Cart = () => {
             <div className="cart-items-container">
               {cartItems.map((item) => (
                 <div key={item.id} className="cart-item">
-                  <img src={item.image} alt={item.name} className="cart-item-image" />
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="cart-item-image"
+                  />
                   <div className="cart-item-details">
                     <Typography className="cart-item-name">{item.name}</Typography>
                     <Typography className="cart-item-quantity">
@@ -134,6 +163,7 @@ const Cart = () => {
                 color="primary"
                 fullWidth
                 className="cart-checkout-button"
+                onClick={handleCheckout}
               >
                 Comprar Ahora
               </Button>

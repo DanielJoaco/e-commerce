@@ -79,34 +79,27 @@
     margin-left: 1rem;
     color: #561290;
   }
+  .header-logo-link h2{
+    padding-right: 1rem;
+  }
   
 
-  @media (max-width: 800px) {
+  @media (max-width: 820px) {
     html{
         font-size: 60%;
     }
-
-    h2{
-        display: none;
-    }
-
-  
-    .search-container{
-        justify-content: center;
-    }
-    .search-input {
-        flex: none
-    }
-
-  }
-
-  @media (max-width: 600px) {
     .header-links {
       display: none !important;
     }
     .header-menu {
       display: flex !important;
       flex-direction: column !important;
+    }
+    .search-container{
+        justify-content: center;
+    }
+    .search-input {
+        flex: none
     }
     .MuiMenu-paper {
       display: block !important;
@@ -119,17 +112,22 @@
       backdrop-filter: blur(0.5rem) !important;
       padding: 1rem 1rem 1rem 1rem !important;
     }
-    .search-input {
-      width: 15rem !important;
-      font-size: 1rem !important;
-    }
-    .search-container {
-      width: auto !important;
-    }
     .menu-button {
       font-family: "Lobster", sans-serif !important;
       text-transform: none !important;
       color: white !important;
       font-size: 1.4rem !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h2{
+      display: none;
+    }
+    .search-input {
+      width: 15rem !important;
+    }
+    .search-container {
+      width: auto !important;
     }
   }

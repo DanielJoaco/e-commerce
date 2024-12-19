@@ -61,15 +61,11 @@ a{
 }
 
 @media screen and (max-width: 800px) {
-  body {
-    font-size: 1.4rem;
-  }
   #title_header{
     display: none;
   }
 
   a {
-    font-size: 1.2rem;
     margin: 0.5rem 0;
   }
 
