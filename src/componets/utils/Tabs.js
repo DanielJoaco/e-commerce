@@ -81,9 +81,14 @@ export default function DynamicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={value}>
-        <div className="div-container-tabs">
+      <div className="menu-navigation-mobile">
           <MenuNavigationMobile onFilter={handleFilter} />
-          <div>
+            </div>
+        <div className="div-container-tabs">
+          <div className="menu-navigation">
+            <MenuNavigation onFilter={handleFilter} />
+          </div>
+          <div className="content-container-tabs">
             <ProductCards data={paginatedContent} />
             <Stack spacing={2} className="pagination-container">
               <Pagination

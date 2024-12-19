@@ -6,6 +6,7 @@ html {
 body{
   background: linear-gradient(135deg, rgba(85, 18, 144, 0.795), rgba(79, 72, 143, 0.603), rgb(131, 94, 153));
   color: white;
+  margin: 0;
 }
 
 body, button, input{

@@ -3,7 +3,17 @@
     width: 100%;
     background-color: transparent;
   }
-  
+
+  .menu-navigation-mobile{
+    display: none;
+  }
+  .menu-navigation{
+    width: 100% !important;
+    border-radius: 0 0 2rem 0;
+  }
+  .content-container-tabs{
+    width: 300%;
+  }
   
   /* Tab bar styles */
   .tab-bar {
@@ -108,6 +118,12 @@
 @media (max-width: 600px) {
   html{
     font-size: 40%;
+  }
+  .menu-navigation{
+    display: none;
+  }
+  .menu-navigation-mobile{
+    display: block;
   }
 }
   
