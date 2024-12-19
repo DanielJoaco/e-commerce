@@ -6,6 +6,7 @@ import HandleSearch from './utils/handleSearch';
 import logo from '../assets/logo.png';
 import '../styles/HeaderStyles.css';
 import Cart from "./utils/Cart.js";
+import PositionedMenu from "./utils/menu-sign.js";
 
 function Header({ onNavigate }) {
   return (
@@ -26,7 +27,8 @@ function Header({ onNavigate }) {
           <div className="header-search">
             <HandleSearch />
           </div>
-          <div className="header-links">
+            <div style={{ display:"flex", flexDirection:"row"}}>
+            <div className="header-links">
             <a
               href="#!"
               onClick={(e) => {
@@ -47,8 +49,12 @@ function Header({ onNavigate }) {
             >
               Registrarse
             </a>
-              <Cart />
-          </div>
+            </div>
+            <div className="header-menu">
+              <PositionedMenu onNavigate={onNavigate} />
+            </div>
+            <Cart />
+            </div>
         </Toolbar>
       </AppBar>
     </Box>

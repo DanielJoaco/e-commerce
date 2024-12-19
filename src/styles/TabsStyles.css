@@ -4,6 +4,7 @@
     background-color: transparent;
   }
   
+  
   /* Tab bar styles */
   .tab-bar {
     display: flex;
@@ -45,7 +46,6 @@
   .div-container-tabs{
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
     width: 100%;
   }
 
@@ -82,7 +82,7 @@
 
   .MuiCard-root{
     width: 25rem !important;
-    height: 50rem !important;
+    height: 55rem !important;
   }
 
   .out-of-stock{
@@ -95,31 +95,19 @@
   }
 
   @media (max-width: 800px) {
-    .tab.inactive, .tab.active{
-      font-size: 1.6rem;
-    }
-    .MuiTypography-root{
-      font-size: 1.6rem !important;
-    }
-    .MuiButtonBase-root{
-      font-size: 1.4rem !important;
-    }
-    .MuiCard-root{
-      width: 25rem !important;
-      height: 40rem !important;
+    html{
+      font-size: 50%;
     }
     .pagination {
       & .MuiPaginationItem-root {
         padding: 0;
       }
     }
-    .MuiCardMedia-root{
-      height: 12rem !important;
-      width: 50% !important;
-    }
 }
 
-  @media (max-width: 600px) {
-    
+@media (max-width: 600px) {
+  html{
+    font-size: 40%;
   }
+}
   

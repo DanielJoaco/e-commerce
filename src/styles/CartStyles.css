@@ -1,5 +1,9 @@
 .cart-icon-button {
     position: relative !important;
+    padding-left: 2rem !important;
+}
+.MuiSvgIcon-root {
+    font-size: 2.4rem !important;
 }
   
 .cart-drawer {

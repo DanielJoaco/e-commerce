@@ -4,6 +4,7 @@ import ProductCards from "./ProductCards";
 import data from "../../data.json";
 import "../../styles/TabsStyles.css";
 import MenuNavigation from "./menu-navigation.js";
+import MenuNavigationMobile from "./menu-navigation-mobile.js";
 
 function CustomTabPanel({ children, value, index, ...other }) {
   return (
@@ -81,7 +82,7 @@ export default function DynamicTabs() {
       </Box>
       <CustomTabPanel value={value} index={value}>
         <div className="div-container-tabs">
-          <MenuNavigation onFilter={handleFilter} />
+          <MenuNavigationMobile onFilter={handleFilter} />
           <div>
             <ProductCards data={paginatedContent} />
             <Stack spacing={2} className="pagination-container">
