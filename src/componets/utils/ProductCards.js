@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Box, Card, CardContent, CardMedia, Typography, Button, Grid, Stack, Alert } from "@mui/material";
 import { Star, StarHalf, StarOutline } from "@mui/icons-material";
+import ViewProduct from "../viewProducts";
 
 const ProductCards = ({ data }) => {
   const [quantities, setQuantities] = useState({});
-  const [alert, setAlert] = useState({ message: "", severity: "", show: false }); // Estado para manejar las alertas
+  const [alert, setAlert] = useState({ message: "", severity: "", show: false });
+  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para producto seleccionado
 
   useEffect(() => {
     const initialQuantities = data.reduce((acc, product) => {
@@ -28,18 +30,16 @@ const ProductCards = ({ data }) => {
   const handleAddToCart = (product) => {
     const existingCart = JSON.parse(localStorage.getItem("ecommerce_cart")) || [];
     const cartProductIndex = existingCart.findIndex((item) => item.name === product.name);
-  
+
     let alertMessage = "";
-    let alertSeverity = "success"; // Por defecto, éxito
-  
+    let alertSeverity = "success";
+
     if (cartProductIndex > -1) {
       const cartProduct = existingCart[cartProductIndex];
-  
-      // Validar cantidad máxima antes de agregar
       if (cartProduct.quantity + quantities[product.id] > product.quantity) {
-        cartProduct.quantity = product.quantity; // Ajustar a la cantidad máxima
+        cartProduct.quantity = product.quantity;
         alertMessage = "Ya han sido agregados la cantidad máxima de productos";
-        alertSeverity = "warning"; // Cambiar a warning para esta condición
+        alertSeverity = "warning";
       } else {
         cartProduct.quantity += quantities[product.id];
         alertMessage = "Producto agregado al carrito";
@@ -57,22 +57,19 @@ const ProductCards = ({ data }) => {
       alertMessage = quantityToAdd === product.quantity
         ? "Ya han sido agregados la cantidad máxima de productos"
         : "Producto agregado al carrito";
-  
+
       if (quantityToAdd === product.quantity) {
-        alertSeverity = "warning"; // Cambiar a warning si se alcanza el máximo
+        alertSeverity = "warning";
       }
     }
-  
-    // Actualizar el carrito en localStorage
-    localStorage.setItem("ecommerce_cart", JSON.stringify(existingCart));
-  
-    // Mostrar alerta
+
+    updateCartInLocalStorage(existingCart);
+
     if (alertMessage) {
       setAlert({ show: true, message: alertMessage, severity: alertSeverity });
       setTimeout(() => setAlert({ show: false, message: "", severity: "" }), 3000);
     }
   };
-  
 
   const renderStars = (stars) => {
     const fullStars = Math.floor(stars);
@@ -92,85 +89,101 @@ const ProductCards = ({ data }) => {
     );
   };
 
+  const handleViewProduct = (product) => {
+    setSelectedProduct(product); // Cambiar el estado para mostrar el producto seleccionado
+  };
+
   return (
     <Box sx={styles.gridContainer}>
       {alert.show && (
         <Stack sx={styles.alertContainer} spacing={2}>
-          <Alert severity={alert.severity} sx={styles.alertMessagge}>{alert.message}</Alert>
+          <Alert severity={alert.severity} sx={styles.alertMessagge}>
+            {alert.message}
+          </Alert>
         </Stack>
       )}
-      <Grid container spacing={4}>
-        {data.map((product) => (
-          <Grid item xs={6} sm={6} md={4} key={product.id}>
-            <Box sx={styles.cardWrapper}>
-              {product.quantity < 1 && (
-                <Button disabled sx={styles.outOfStock} className="out-of-stock">
-                  ¡Agotado!
-                </Button>
-              )}
-              <Card sx={styles.card}>
-                <CardMedia
-                  component="img"
-                  sx={styles.cardMedia}
-                  image={product.image}
-                  alt={product.name}
-                />
-                <CardContent sx={styles.cardContent}>
-                  <Box sx={styles.starsContainer}>
-                    {renderStars(product.stars)}
-                    <Typography variant="body2" color="white" sx={styles.reviewsText}>
-                      | {product.reviews} opiniones
-                    </Typography>
-                  </Box>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    sx={styles.productName}
-                  >
-                    {product.name}
-                  </Typography>
-                  <Typography variant="h4" color="#F9CA7F" sx={styles.productPrice}>
-                    ${product.price.toFixed(0)}
-                  </Typography>
-                  <Box sx={styles.quantityContainer}>
-                    <Button
-                      variant="outlined"
-                      onClick={() =>
-                        handleQuantityChange(product.id, quantities[product.id] - 1, product.quantity)
-                      }
-                      disabled={quantities[product.id] <= 0 || product.quantity < 1}
-                      sx={styles.quantityButton}
-                    >
-                      -
-                    </Button>
-                    <Box sx={styles.quantityBox}>{quantities[product.id] || 0}</Box>
-                    <Button
-                      variant="outlined"
-                      onClick={() =>
-                        handleQuantityChange(product.id, quantities[product.id] + 1, product.quantity)
-                      }
-                      disabled={quantities[product.id] >= product.quantity || product.quantity < 1}
-                      sx={styles.quantityButton}
-                    >
-                      +
-                    </Button>
-                  </Box>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    sx={styles.addToCartButton}
-                    disabled={product.quantity < 1}
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    Agregar al carrito
+      {selectedProduct ? (
+        // Mostrar solo el producto seleccionado
+        <ViewProduct
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)} // Permite cerrar la vista del producto y volver al grid
+        />
+      ) : (
+        // Mostrar el grid de productos si no hay producto seleccionado
+        <Grid container spacing={4}>
+          {data.map((product) => (
+            <Grid item xs={6} sm={6} md={4} key={product.id}>
+              <Box sx={styles.cardWrapper}>
+                {product.quantity < 1 && (
+                  <Button disabled sx={styles.outOfStock} className="out-of-stock">
+                    ¡Agotado!
                   </Button>
-                </CardContent>
-              </Card>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
+                )}
+                <Card sx={styles.card}>
+                  <CardMedia
+                    component="img"
+                    sx={styles.cardMedia}
+                    image={product.image}
+                    alt={product.name}
+                    onClick={() => handleViewProduct(product)}
+                  />
+                  <CardContent sx={styles.cardContent}>
+                    <Box sx={styles.starsContainer}>
+                      {renderStars(product.stars)}
+                      <Typography variant="body2" color="white" sx={styles.reviewsText}>
+                        | {product.reviews} opiniones
+                      </Typography>
+                    </Box>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      sx={styles.productName}
+                    >
+                      {product.name}
+                    </Typography>
+                    <Typography variant="h4" color="#F9CA7F" sx={styles.productPrice}>
+                      ${product.price.toFixed(0)}
+                    </Typography>
+                    <Box sx={styles.quantityContainer}>
+                      <Button
+                        variant="outlined"
+                        onClick={() =>
+                          handleQuantityChange(product.id, quantities[product.id] - 1, product.quantity)
+                        }
+                        disabled={quantities[product.id] <= 0 || product.quantity < 1}
+                        sx={styles.quantityButton}
+                      >
+                        -
+                      </Button>
+                      <Box sx={styles.quantityBox}>{quantities[product.id] || 0}</Box>
+                      <Button
+                        variant="outlined"
+                        onClick={() =>
+                          handleQuantityChange(product.id, quantities[product.id] + 1, product.quantity)
+                        }
+                        disabled={quantities[product.id] >= product.quantity || product.quantity < 1}
+                        sx={styles.quantityButton}
+                      >
+                        +
+                      </Button>
+                    </Box>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      sx={styles.addToCartButton}
+                      disabled={product.quantity < 1}
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      Agregar al carrito
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Box>
   );
 };
@@ -310,6 +323,9 @@ const styles = {
     textShadow: "0.1rem 0.1rem 0.5rem #561290",
     textTransform: "none",
     backgroundColor: "rgb(212, 65, 200)",
+    "&:hover": {
+      backgroundColor: "#854bb8",
+    },
   },
 };
 

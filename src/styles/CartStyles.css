@@ -70,7 +70,7 @@
     font-size: 1.6rem !important;
 }
 
-.cart-item-quantity{
+.cart-item-quantity, .css-rizt0-MuiTypography-root{
     font-family: "Lobster", sans-serif !important;
     font-size: 1.2rem !important;
     font-weight: 200 !important;
@@ -120,7 +120,7 @@
     }
 }
   
-.cart-total {
+.cart-total, .MuiTypography-h6 {
     margin-top: 1.6rem !important;
     font-weight: 400 !important;
 }

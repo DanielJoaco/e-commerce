@@ -32,6 +32,7 @@ const MenuNavigationMobile = ({ onFilter }) => {
   const handleClick = (e) => {
     setCurrent(e.key);
     onFilter(e.key); // Call the filter callback
+    closeDrawer(); // Close the drawer after selecting a subcategory
   };
 
   const showDrawer = () => {
@@ -42,34 +43,34 @@ const MenuNavigationMobile = ({ onFilter }) => {
     setVisible(false);
   };
 
-return (
+  return (
     <div>
-        <Button
-            type="primary"
-            icon={<MenuOutlined />}
-            onClick={showDrawer}
-            className="menu-button-mobile"
-        >
-            Filtro por categorias  
-        </Button>
-        <Drawer
-            title="Categorias y subcategorias"
-            placement="left"
-            onClose={closeDrawer}
-            visible={visible}
-            bodyStyle={{ padding: 0 }}
-            className="drawer"
-        >
-            <Menu
-                onClick={handleClick}
-                selectedKeys={[current]}
-                mode="inline"
-                theme="dark"
-                items={menuItems}
-            />
-        </Drawer>
+      <Button
+        type="primary"
+        icon={<MenuOutlined />}
+        onClick={showDrawer}
+        className="menu-button-mobile"
+      >
+        Filtro por categorias
+      </Button>
+      <Drawer
+        title="Categorias y subcategorias"
+        placement="left"
+        onClose={closeDrawer}
+        visible={visible}
+        bodyStyle={{ padding: 0 }}
+        className="drawer"
+      >
+        <Menu
+          onClick={handleClick}
+          selectedKeys={[current]}
+          mode="inline"
+          theme="dark"
+          items={menuItems}
+        />
+      </Drawer>
     </div>
-);
+  );
 };
 
 export default MenuNavigationMobile;

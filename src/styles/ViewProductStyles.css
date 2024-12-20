@@ -1,0 +1,182 @@
+.view-product-container {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 2rem;
+    text-shadow: 0.1rem 0.1rem 0.5rem #561290;
+
+}
+
+.css-1wcaknn {
+    padding: 1rem !important;
+}
+
+.view-product-container > div {
+    display: flex;
+    width: 100% !important;
+    background-color: transparent;
+    border-radius: 2rem;
+}
+
+.view-product-container img {
+    width: 40rem;
+    height: 20rem;
+    object-fit: contain;
+    padding: 1rem;
+    background-color: rgba(218, 218, 218, 0.3);
+    border-radius: 10000rem;
+    margin: 2rem 0 0 2rem;
+}
+
+.view-product-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4rem !important;
+}
+
+.MuiTypography-h5, .view-product-container p{
+    font-family: "Lobster", sans-serif !important;
+    color: white;
+}
+.MuiTypography-h5{
+    font-size: 2.4rem !important;
+}
+.view-product-container p{
+    font-size: 1.6rem;
+}
+
+.view-product-container h4{
+    font-family: "Lobster", sans-serif;
+    font-size: 2.2rem;
+}
+
+.stars-container {
+    display: flex;
+    align-items: center;
+}
+.stars-container svg{
+    color: #FFD700;
+}
+
+.quantity-buttons{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+.quantity-buttons button{
+    font-family: "Lobster, sans-serif" !important;
+    border-radius: 10rem !important;
+    font-size: 1.6rem !important;
+    background-color: rgba(115, 104, 214, 0.6) !important;
+    box-shadow: 0.4rem 0.4rem 1.0rem #0000004d !important;
+    text-shadow: 0.1rem 0.1rem 0.5rem #561290 !important;
+    color: white !important;
+    padding: 0 !important;
+    min-width: 3rem !important;
+    margin: 0 1rem 0 1rem;
+    &:hover {
+        background-color: #561290 !important;
+    }
+}
+
+.quantity-box{
+    font-weight: bold !important;
+    font-family: "Lobster", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 1.4rem !important;
+    background-color: rgba(255, 255, 255, 0.89);
+    width: 5rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+}
+
+.add-to-cart-button{
+    font-size: 1.4rem !important;
+    border-radius: 2rem !important;
+    font-family: 'Lobster', sans-serif !important;
+    font-weight: 400 !important;
+    text-shadow: 0.1rem 0.1rem 0.5rem #561290 !important;
+    text-transform: none !important;
+    background-color: rgb(212, 65, 200) !important;
+    margin: 2rem !important;
+}
+.add-to-cart-button:hover {
+    background-color: #854bb8;
+}
+/* Contenedor de estrellas */
+.view-product-stars-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo de los iconos de estrellas */
+.view-product-star-icon {
+    color: #FFD700;
+}
+
+/* Texto de opiniones */
+.view-product-reviews-text {
+    margin-left: 8px;
+}
+
+/* Nombre del producto */
+.view-product-name {
+    margin-top: 16px;
+}
+
+/* Precio del producto */
+.view-product-price {
+    margin-top: 8px;
+    color: #F9CA7F;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Descripción del producto */
+.view-product-description {
+    margin-top: 8px;
+    text-align: center;
+    color: #666;
+}
+
+/* Contenedor de cantidad */
+.view-product-quantity-container {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
+
+/* Botones de cantidad */
+.view-product-quantity-button {
+    min-width: 30px;
+}
+
+/* Caja de cantidad */
+.view-product-quantity-box {
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Botón para agregar al carrito */
+.view-product-add-to-cart-button {
+    margin-top: 16px;
+}
+
+/* Contenedor de alerta */
+.view-product-alert-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Mensaje de alerta */
+.view-product-alert-message {
+    width: 100%;
+}
