@@ -3,6 +3,10 @@
     justify-content: space-between;
     width: 100%;
   }
+  #register{
+    padding-left: 5rem;
+    color: white
+  }
   .divImg {
     display: flex;
     justify-content: center;
@@ -120,6 +124,12 @@
     }
   }
   @media (max-width: 575px) {
+    #register{
+      padding-left: 0;
+    }
+    .css-dev-only-do-not-override-1kf000u{
+      width: auto !important;
+    }
     .container {
       display: flex !important;
       flex-direction: column !important;

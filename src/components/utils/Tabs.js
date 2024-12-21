@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Box, Tabs, Tab, Pagination, Stack } from "@mui/material";
-import ProductCards from "./ProductCards";
+import ProductCards from "./ProductCards.js";
 import data from "../../data.json";
 import "../../styles/TabsStyles.css";
-import MenuNavigation from "./menu-navigation.js";
-import MenuNavigationMobile from "./menu-navigation-mobile.js";
+import MenuNavigation from "./menuNavigation.js";
+import MenuNavigationMobile from "./menuNavigationMobile.js";
 
 function CustomTabPanel({ children, value, index, ...other }) {
   return (
@@ -81,9 +81,9 @@ export default function DynamicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={value}>
-      <div className="menu-navigation-mobile">
+        <div className="menu-navigation-mobile">
           <MenuNavigationMobile onFilter={handleFilter} />
-            </div>
+        </div>
         <div className="div-container-tabs">
           <div className="menu-navigation">
             <MenuNavigation onFilter={handleFilter} />

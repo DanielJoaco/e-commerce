@@ -1,32 +1,35 @@
 import './styles/App.css';
-import React, { useState } from 'react';
-import Header from './componets/header.js';
-import Footer from './componets/Footer.js';
-import BasicTabs from './componets/utils/Tabs.js';
-import AboutUs from './componets/aboutUs.js';
-import CustomerService from './componets/customerService.tsx';
-import SignIn from './componets/signIn.js';
-import SignUp from './componets/signUp.js';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/header.js';
+import Footer from './components/footer.js';
+import BasicTabs from './components/utils/Tabs.js';
+import AboutUs from './components/aboutUs.js';
+import CustomerService from './components/customerService.tsx';
+import SignIn from './components/signIn.js';
+import SignUp from './components/signUp.js';
+import ViewProduct from './components/viewProducts';
+import SearchResults from "./components/searchResults.js";
 
 function App() {
-  const [currentView, setCurrentView] = useState('tabs');
-  const [currentSection, setCurrentSection] = useState(''); 
-
-  const handleNavigation = (page, section = '') => {
-    setCurrentView(page);
-    setCurrentSection(section);
-  };
-
   return (
-    <div className="App">
-      <Header onNavigate={handleNavigation} />
-      {currentView === 'tabs' && <BasicTabs />}
-      {currentView === 'aboutUs' && <AboutUs section={currentSection} />}
-      {currentView === 'customerService' && <CustomerService section={currentSection} />}
-      {currentView === 'signIn' && <SignIn />}
-      {currentView === 'signUp' && <SignUp />}
-      <Footer onNavigate={handleNavigation} />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<BasicTabs />} />
+          <Route path="/e-commerce" element={<BasicTabs />} />
+          <Route path="/tabs" element={<BasicTabs />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/customerService" element={<CustomerService />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/product/:name" element={<ViewProduct />} /> {/* Cambia id por nombre */}
+          <Route path="/search" element={<SearchResults />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

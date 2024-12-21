@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Card, CardContent, CardMedia, Typography, Button, Grid, Stack, Alert } from "@mui/material";
 import { Star, StarHalf, StarOutline } from "@mui/icons-material";
-import ViewProduct from "../viewProducts";
 
 const ProductCards = ({ data }) => {
   const [quantities, setQuantities] = useState({});
   const [alert, setAlert] = useState({ message: "", severity: "", show: false });
-  const [selectedProduct, setSelectedProduct] = useState(null); // Estado para producto seleccionado
+  const navigate = useNavigate();
 
   useEffect(() => {
     const initialQuantities = data.reduce((acc, product) => {
@@ -90,8 +90,10 @@ const ProductCards = ({ data }) => {
   };
 
   const handleViewProduct = (product) => {
-    setSelectedProduct(product); // Cambiar el estado para mostrar el producto seleccionado
+    const productName = encodeURIComponent(product.name.replace(/\s+/g, '-').toLowerCase());
+    navigate(`/product/${productName}`);
   };
+  
 
   return (
     <Box sx={styles.gridContainer}>
@@ -102,88 +104,79 @@ const ProductCards = ({ data }) => {
           </Alert>
         </Stack>
       )}
-      {selectedProduct ? (
-        // Mostrar solo el producto seleccionado
-        <ViewProduct
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)} // Permite cerrar la vista del producto y volver al grid
-        />
-      ) : (
-        // Mostrar el grid de productos si no hay producto seleccionado
-        <Grid container spacing={4}>
-          {data.map((product) => (
-            <Grid item xs={6} sm={6} md={4} key={product.id}>
-              <Box sx={styles.cardWrapper}>
-                {product.quantity < 1 && (
-                  <Button disabled sx={styles.outOfStock} className="out-of-stock">
-                    ¡Agotado!
-                  </Button>
-                )}
-                <Card sx={styles.card}>
-                  <CardMedia
-                    component="img"
-                    sx={styles.cardMedia}
-                    image={product.image}
-                    alt={product.name}
-                    onClick={() => handleViewProduct(product)}
-                  />
-                  <CardContent sx={styles.cardContent}>
-                    <Box sx={styles.starsContainer}>
-                      {renderStars(product.stars)}
-                      <Typography variant="body2" color="white" sx={styles.reviewsText}>
-                        | {product.reviews} opiniones
-                      </Typography>
-                    </Box>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      sx={styles.productName}
-                    >
-                      {product.name}
+      <Grid container spacing={4}>
+        {data.map((product) => (
+          <Grid item xs={6} sm={6} md={4} key={product.id}>
+            <Box sx={styles.cardWrapper}>
+              {product.quantity < 1 && (
+                <Button disabled sx={styles.outOfStock} className="out-of-stock">
+                  ¡Agotado!
+                </Button>
+              )}
+              <Card sx={styles.card}>
+                <CardMedia
+                  component="img"
+                  sx={styles.cardMedia}
+                  image={product.image}
+                  alt={product.name}
+                  onClick={() => handleViewProduct(product)}
+                />
+                <CardContent sx={styles.cardContent}>
+                  <Box sx={styles.starsContainer}>
+                    {renderStars(product.stars)}
+                    <Typography variant="body2" color="white" sx={styles.reviewsText}>
+                      | {product.reviews} opiniones
                     </Typography>
-                    <Typography variant="h4" color="#F9CA7F" sx={styles.productPrice}>
-                      ${product.price.toFixed(0)}
-                    </Typography>
-                    <Box sx={styles.quantityContainer}>
-                      <Button
-                        variant="outlined"
-                        onClick={() =>
-                          handleQuantityChange(product.id, quantities[product.id] - 1, product.quantity)
-                        }
-                        disabled={quantities[product.id] <= 0 || product.quantity < 1}
-                        sx={styles.quantityButton}
-                      >
-                        -
-                      </Button>
-                      <Box sx={styles.quantityBox}>{quantities[product.id] || 0}</Box>
-                      <Button
-                        variant="outlined"
-                        onClick={() =>
-                          handleQuantityChange(product.id, quantities[product.id] + 1, product.quantity)
-                        }
-                        disabled={quantities[product.id] >= product.quantity || product.quantity < 1}
-                        sx={styles.quantityButton}
-                      >
-                        +
-                      </Button>
-                    </Box>
+                  </Box>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    sx={styles.productName}
+                  >
+                    {product.name}
+                  </Typography>
+                  <Typography variant="h4" color="#F9CA7F" sx={styles.productPrice}>
+                    ${product.price.toFixed(0)}
+                  </Typography>
+                  <Box sx={styles.quantityContainer}>
                     <Button
-                      variant="contained"
-                      color="success"
-                      sx={styles.addToCartButton}
-                      disabled={product.quantity < 1}
-                      onClick={() => handleAddToCart(product)}
+                      variant="outlined"
+                      onClick={() =>
+                        handleQuantityChange(product.id, quantities[product.id] - 1, product.quantity)
+                      }
+                      disabled={quantities[product.id] <= 0 || product.quantity < 1}
+                      sx={styles.quantityButton}
                     >
-                      Agregar al carrito
+                      -
                     </Button>
-                  </CardContent>
-                </Card>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      )}
+                    <Box sx={styles.quantityBox}>{quantities[product.id] || 0}</Box>
+                    <Button
+                      variant="outlined"
+                      onClick={() =>
+                        handleQuantityChange(product.id, quantities[product.id] + 1, product.quantity)
+                      }
+                      disabled={quantities[product.id] >= product.quantity || product.quantity < 1}
+                      sx={styles.quantityButton}
+                    >
+                      +
+                    </Button>
+                  </Box>
+                  <Button
+                    variant="contained"
+                    color="success"
+                    sx={styles.addToCartButton}
+                    disabled={product.quantity < 1}
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Agregar al carrito
+                  </Button>
+                </CardContent>
+              </Card>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };

@@ -1,8 +1,11 @@
-import React from 'react';
-import { FaFacebook, FaInstagram, FaTiktok } from 'react-icons/fa';
-import '../styles/FooterStyles.css';
+import React from "react";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import "../styles/FooterStyles.css";
 
-const Footer = ({ onNavigate }) => {
+const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -11,7 +14,7 @@ const Footer = ({ onNavigate }) => {
           <ul className="footer-list">
             <li>
               <button
-                onClick={() => onNavigate('aboutUs', 'mision')}
+                onClick={() => navigate("/aboutUs#mision")}
                 className="footer-link"
               >
                 Misión
@@ -19,7 +22,7 @@ const Footer = ({ onNavigate }) => {
             </li>
             <li>
               <button
-                onClick={() => onNavigate('aboutUs', 'quienesSomos')}
+                onClick={() => navigate("/aboutUs#quienesSomos")}
                 className="footer-link"
               >
                 ¿Quiénes Somos?
@@ -27,7 +30,7 @@ const Footer = ({ onNavigate }) => {
             </li>
             <li>
               <button
-                onClick={() => onNavigate('aboutUs', 'contacto')}
+                onClick={() => navigate("/aboutUs#contacto")}
                 className="footer-link"
               >
                 Contacto
@@ -41,7 +44,7 @@ const Footer = ({ onNavigate }) => {
           <ul className="footer-list">
             <li>
               <button
-                onClick={() => onNavigate('customerService', 'politicas')}
+                onClick={() => navigate("/customerService#politicas")}
                 className="footer-link"
               >
                 Políticas
@@ -49,7 +52,7 @@ const Footer = ({ onNavigate }) => {
             </li>
             <li>
               <button
-                onClick={() => onNavigate('customerService', 'envios')}
+                onClick={() => navigate("/customerService#envios")}
                 className="footer-link"
               >
                 Envíos
@@ -57,7 +60,7 @@ const Footer = ({ onNavigate }) => {
             </li>
             <li>
               <button
-                onClick={() => onNavigate('customerService', 'faq')}
+                onClick={() => navigate("/customerService#faq")}
                 className="footer-link"
               >
                 Preguntas Frecuentes
@@ -72,18 +75,24 @@ const Footer = ({ onNavigate }) => {
             <a
               href="https://www.facebook.com/profile.php?id=100094601974802"
               className="footer-icon-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaFacebook className="footer-icon" />
             </a>
             <a
               href="https://www.instagram.com/yane_beautystore/"
               className="footer-icon-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaInstagram className="footer-icon" />
             </a>
             <a
               href="https://www.tiktok.com/@yane_beautystore"
               className="footer-icon-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaTiktok className="footer-icon" />
             </a>

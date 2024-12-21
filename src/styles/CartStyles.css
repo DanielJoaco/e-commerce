@@ -20,7 +20,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     text-shadow: 0.1rem 0.1rem 0.5rem #9f57df !important;
-}
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    max-height: 100vh; /* Límite máximo de altura */
+    overflow-y: auto; /* Habilita el scroll vertical */
+    }
   
 .css-1miy0lu-MuiTypography-root {
     margin-bottom: 1.6rem !important;

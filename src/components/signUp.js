@@ -49,10 +49,7 @@ const SignUp = () => {
       </div>
       <Form
         className="formContainer"
-        {...{
-          labelCol: { xs: { span: 24 }, sm: { span: 8 } },
-          wrapperCol: { xs: { span: 24 }, sm: { span: 16 } },
-        }}
+        layout="vertical"
         form={form}
         name="register"
         onFinish={onFinish}
@@ -62,9 +59,7 @@ const SignUp = () => {
         }}
         scrollToFirstError
       >
-        <Form.Item {...{ wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 8 } } }}>
-          <h1 className="formHeader">Registrarse</h1>
-        </Form.Item>
+        <h1 className="formHeader">Registrarse</h1>
 
         <Form.Item
           name="email"
@@ -157,14 +152,20 @@ const SignUp = () => {
                 value ? Promise.resolve() : Promise.reject(new Error('Debes aceptar los términos')),
             },
           ]}
-          {...{ wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 8 } } }}
         >
           <Checkbox className="checkbox">
-            Acepto los <a href="#" className='terminos'>términos y condiciones</a>
+            Acepto los{' '}
+            <span
+              className="terminos"
+              onClick={() => alert('Mostrando términos y condiciones')}
+              style={{ color: '#1890ff', cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              términos y condiciones
+            </span>
           </Checkbox>
         </Form.Item>
 
-        <Form.Item {...{ wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 8 } } }}>
+        <Form.Item>
           <Button type="primary" htmlType="submit" className="buttonContainer">
             Registrarse
           </Button>
